@@ -1,2 +1,13 @@
-out/
+# Thư mục IntelliJ IDEA
 .idea/
+
+# File cấu hình module
+*.iml
+
+# Thư mục build
+out/
+target/
+
+# File hệ thống
+.DS_Store
+Thumbs.db
