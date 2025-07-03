@@ -14,11 +14,13 @@ public class demo {
                 int tuoiCon = 10;
 //                float diemVan = 7.5f;
 //                double diemAnh = 7.5;
-                System.out.println("tuổi con trước khi thay đổi = " +tuoiCon);
+                System.out.println("tuổi con trước khi thay đổi = " +tuoiCon );
                 tuoiCon=15;
                 System.out.println("tuổi con sau khi thay đổi = " +tuoiCon);
 
 
+                System.out.println("min của kiểu int " +Integer.MIN_VALUE);
+                System.out.println("max của kiểu int " +Integer.MAX_VALUE);
                 //hằng số
 //                final int Dosoi=100;
 
