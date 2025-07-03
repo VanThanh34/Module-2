@@ -18,6 +18,7 @@ public class demo {
                 tuoiCon=15;
                 System.out.println("tuổi con sau khi thay đổi = " +tuoiCon);
 
+
                 //hằng số
 //                final int Dosoi=100;
 
