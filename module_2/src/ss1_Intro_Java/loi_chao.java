@@ -8,5 +8,6 @@ public class loi_chao {
         System.out.print("Nhập tên của bạn: ");
         String n = sc.next();
         System.out.printf("Hello: %s", n);
+
     }
 }
