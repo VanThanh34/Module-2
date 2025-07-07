@@ -2,7 +2,7 @@ package module_2.src.ss1_Intro_Java;
 
 import java.util.Scanner;
 
-public class doc_so_thanh_chu {
+public class DocSoThanhChu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Mời nhập số (từ 0 đến 999): ");
