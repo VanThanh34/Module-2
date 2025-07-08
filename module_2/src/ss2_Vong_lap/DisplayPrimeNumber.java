@@ -12,12 +12,12 @@ public class DisplayPrimeNumber {
         } while (n < 0);
         int count = 0;
         int num = 2;
+        boolean isPrime = true;
         while (count < n) {
-            boolean isPrime = true;
             if (num < 2) {
                 isPrime = false;
             } else {
-                for (int i = 2; i <= num - 1; i++) {
+                for (int i = 2; i <= Math.sqrt(num); i++) {
                     if (num % i == 0) {
                         isPrime = false;
                         break;
