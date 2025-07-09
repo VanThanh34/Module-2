@@ -1,4 +1,3 @@
-/*
 package module_2.src.common;
 
 import java.util.Scanner;
@@ -22,5 +21,5 @@ public class TwoDimensionalArray {
 
         return array;
     }
+
 }
-*/

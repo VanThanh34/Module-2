@@ -1,4 +1,3 @@
-/*
 package module_2.src.common;
 
 import java.util.Scanner;
@@ -21,5 +20,5 @@ public class SumOfColumn {
 
         System.out.println("Sum element of column " + colIndex + " is: " + sum);
     }
+
 }
-*/
