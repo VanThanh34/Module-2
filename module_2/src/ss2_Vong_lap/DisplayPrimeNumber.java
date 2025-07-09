@@ -12,8 +12,9 @@ public class DisplayPrimeNumber {
         } while (n < 0);
         int count = 0;
         int num = 2;
-        boolean isPrime = true;
+        boolean isPrime;
         while (count < n) {
+            isPrime = true;
             if (num < 2) {
                 isPrime = false;
             } else {
