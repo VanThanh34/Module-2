@@ -14,29 +14,17 @@ public class Student {
     protected String setName(String name) {
         return this.name = name;
     }
-    protected String setClassname(String classname) {
+    protected String setClasses(String classname) {
         return this.classname = classname;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getClassname() {
-        return classname;
-    }
 }
 
 class Test{
     public static void main(String[] args) {
         Student s = new Student();
-        s.setName("Thanh");
-        s.setClassname("C03");
-        Student z = new Student();
-        Student x = new Student("Chris", "C04");
-        System.out.println("Class of student: " + s.getClassname());
-        System.out.println("Name of student: " + s.getName());
-        System.out.println("Info of student: "+z.getClassname()+" "+z.getName());
-        System.out.println("Info of student: "+x.getClassname()+" "+x.getName());
+        System.out.println("Class of student: " + s.setClasses("C03"));
+        System.out.println("Name of student: " + s.setName("Thanh"));
+
     }
 }
