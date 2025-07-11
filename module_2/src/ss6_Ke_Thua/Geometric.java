@@ -1,3 +1,4 @@
+/*
 package module_2.src.ss6_Ke_Thua;
 
 public class Geometric {
@@ -30,30 +31,7 @@ public class Geometric {
                 (filled == null ? "no fill" : "filled with \"" + filled + "\" color");
     }
 }
- class Circle extends Geometric{
-    private double radius;
-    public Circle(){
-    }
-    public Circle(double radius){
-        this.radius = radius;
-    }
 
-     public double getRadius() {
-         return radius;
-     }
-
-     public void setRadius(double radius) {
-         this.radius = radius;
-     }
-     public double getArea(){
-        return Math.PI * radius * radius;
-     }
-     public double getPerimeter(){
-        return 2 * Math.PI * radius;
-     }
-     public double getDiameter(){
-        return 2 * radius;
-     }
      public void printCircle(){
          System.out.println("The " + getColor() + " circle with radius with the radius is " + getRadius());
      }
@@ -121,4 +99,4 @@ class TestCircleRectangle{
         System.out.println();
 
     }
-}
+}*/
