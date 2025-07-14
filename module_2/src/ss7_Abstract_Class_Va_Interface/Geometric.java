@@ -1,5 +1,5 @@
 /*
-package module_2.src.ss6_Ke_Thua;
+package module_2.src.ss7_Abstract_Class_Va_Interface;
 
 public class Geometric {
     private String color = "White";
@@ -41,7 +41,7 @@ public class Geometric {
      }*//*
 
 
- class Rectangle extends Geometric{
+class Rectangle extends module_2.src.ss6_Ke_Thua.Geometric {
     private double width;
     private double height;
 
@@ -53,29 +53,29 @@ public class Geometric {
 
     }
 
-     public double getWidth() {
-         return width;
-     }
+    public double getWidth() {
+        return width;
+    }
 
-     public void setWidth(double width) {
-         this.width = width;
-     }
+    public void setWidth(double width) {
+        this.width = width;
+    }
 
-     public double getHeight() {
-         return height;
-     }
+    public double getHeight() {
+        return height;
+    }
 
-     public void setHeight(double height) {
-         this.height = height;
-     }
-     @Override
-     public double getArea(){
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    @Override
+    public double getArea(){
         return width * height;
-     }
-     public double getPerimeter(){
+    }
+    public double getPerimeter(){
         return 2 * (width + height);
-     }
- }
+    }
+}
 class TestCircleRectangle{
     public static void main(String[] args) {
 //        Geometric circle = new Geometric("brown", "green");
@@ -91,8 +91,8 @@ class TestCircleRectangle{
 //        System.out.println("The diameter is " + circle1.getDiameter());
 //        System.out.println("The perimeter is " + circle2.getPerimeter());
         System.out.println();
-        Rectangle rectangle1 = new Rectangle(2, 4);
-        Rectangle rectangle2 = new Rectangle();
+        module_2.src.ss6_Ke_Thua.Rectangle rectangle1 = new module_2.src.ss6_Ke_Thua.Rectangle(2, 4);
+        module_2.src.ss6_Ke_Thua.Rectangle rectangle2 = new module_2.src.ss6_Ke_Thua.Rectangle();
         rectangle1.setFilled("red");
         rectangle1.setColor("blue");
         rectangle2.setWidth(3);
