@@ -1,4 +1,5 @@
-package module_2.src.ss6_Ke_Thua;
+package module_2.src.ss6_Ke_Thua.HinhHoc;
+
 
 class Circle {
     private double radius = 2.5;
