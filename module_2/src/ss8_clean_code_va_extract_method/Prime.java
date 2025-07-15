@@ -15,7 +15,4 @@ public class Prime {
         checkPrime(n);
     }
 
-
-
-
 }
