@@ -6,6 +6,7 @@ public class KataTennis {
     public static final int ONE = 1;
     public static final int TWO = 2;
     public static final int THREE = 3;
+    public static final int FOUR = 4;
 
     public static String getScore(String player1, String player2, int score1, int score2) {
         if (isDraw(score1, score2)) {
@@ -22,7 +23,7 @@ public class KataTennis {
     }
 
     private static boolean isEndGame(int score1, int score2) {
-        return score1 >= 4 || score2 >= 4;
+        return score1 >= FOUR || score2 >= FOUR;
     }
 
     private static String getDrawScore(int score) {
@@ -58,7 +59,7 @@ public class KataTennis {
     }
 
     public static void main(String[] args) {
-        String result = KataTennis.getScore("Thành", "Tịnh", THREE, TWO);
+        String result = KataTennis.getScore("Thành", "Tịnh", 3, 2);
         System.out.println(result);
     }
 }
