@@ -16,8 +16,8 @@ class DemoTest {
     @Test
     public void sum1() throws Exception {
         int a = 2147483647;
-        int b  = 1;
+        int b  = 2;
         long result = demo.sum(a,b);
-        assertEquals(2147483648l,result);
+        assertEquals(2147483649l,result);
     }
 }
