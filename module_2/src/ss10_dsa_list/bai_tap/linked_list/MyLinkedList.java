@@ -14,11 +14,11 @@ public class MyLinkedList<E> {
         }
     }
 
-    // Phương thức khởi tạo không tham số
+
     public MyLinkedList() {
     }
 
-    // Thêm phần tử vào vị trí chỉ định
+
     public void add(int index, E element) {
         if (index < 0 || index > numNodes) {
             throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
