@@ -8,38 +8,13 @@ import java.util.List;
 public class ProductRepository {
     private final List<Product> products = new ArrayList<>();
 
-    public void add(Product product) {
-        products.add(product);
+    {
+        products.add(new Product(1, "Quạt", 13.5));
+        products.add(new Product(2, "Tủ lạnh", 50.0));
+        products.add(new Product(3, "Máy giặt", 30.0));
     }
 
-
-    public void update(int index, Product product) {
-        products.set(index, product);
-    }
-
-    public void delete(int index) {
-        products.remove(index);
-    }
-
-    public List<Product> getAll() {
+    public List<Product> getProducts() {
         return products;
-    }
-
-    public Product findById(int id) {
-        for (Product p : products) {
-            if (p.getId() == id) {
-                return p;
-            }
-        }
-        return null;
-    }
-
-    public int findIndexById(int id) {
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getId() == id) {
-                return i;
-            }
-        }
-        return -1;
     }
 }

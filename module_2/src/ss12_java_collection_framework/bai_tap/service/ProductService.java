@@ -10,41 +10,55 @@ public class ProductService {
     private final ProductRepository repository = new ProductRepository();
 
     public void addProduct(Product product) {
-        repository.add(product);
+        repository.getProducts().add(product);
     }
 
     public boolean updateProduct(int id, Product updatedProduct) {
-        int index = repository.findIndexById(id);
+        int index = findIndexById(id);
         if (index != -1) {
-            repository.update(index, updatedProduct);
+            repository.getProducts().set(index, updatedProduct);
             return true;
         }
         return false;
     }
 
     public boolean deleteProduct(int id) {
-        int index = repository.findIndexById(id);
+        int index = findIndexById(id);
         if (index != -1) {
-            repository.delete(index);
+            repository.getProducts().remove(index);
             return true;
         }
         return false;
     }
 
     public List<Product> getAllProducts() {
-        return repository.getAll();
+        return repository.getProducts();
     }
 
-
     public Product searchById(int id) {
-        return repository.findById(id);
+        for (Product p : repository.getProducts()) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
     }
 
     public void sortByPriceAscending() {
-        repository.getAll().sort(Comparator.comparingDouble(Product::getPrice));
+        repository.getProducts().sort(Comparator.comparingDouble(Product::getPrice));
     }
 
     public void sortByPriceDescending() {
-        repository.getAll().sort((a, b) -> Double.compare(b.getPrice(), a.getPrice()));
+        repository.getProducts().sort((a, b) -> Double.compare(b.getPrice(), a.getPrice()));
+    }
+
+    public int findIndexById(int id) {
+        List<Product> products = repository.getProducts();
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
