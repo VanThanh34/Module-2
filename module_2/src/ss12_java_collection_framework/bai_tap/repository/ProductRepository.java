@@ -12,6 +12,7 @@ public class ProductRepository {
         products.add(product);
     }
 
+
     public void update(int index, Product product) {
         products.set(index, product);
     }

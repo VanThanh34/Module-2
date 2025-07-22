@@ -5,6 +5,7 @@ import module_2.src.ss12_java_collection_framework.bai_tap.controller.ProductCon
 import java.util.Scanner;
 
 public class ViewMain {
+
     public static void main(String[] args) {
         ProductController controller = new ProductController();
         Scanner sc = new Scanner(System.in);

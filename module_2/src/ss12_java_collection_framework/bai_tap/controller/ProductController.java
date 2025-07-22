@@ -9,6 +9,7 @@ public class ProductController {
     private final ProductService service = new ProductService();
     private final Scanner sc = new Scanner(System.in);
 
+
     public void add() {
         System.out.print("Nhập ID: ");
         int id = Integer.parseInt(sc.nextLine());
