@@ -17,7 +17,7 @@ public class ProductController {
         System.out.print("Nhập giá: ");
         double price = Double.parseDouble(sc.nextLine());
         service.addProduct(new Product(id, name, price));
-        System.out.println("==> Đã thêm sản phẩm.");
+        System.out.println("Đã thêm sản phẩm.");
     }
 
     public void update() {
@@ -30,9 +30,9 @@ public class ProductController {
 
         boolean success = service.updateProduct(id, new Product(id, name, price));
         if (success) {
-            System.out.println("==> Sửa thành công.");
+            System.out.println("Sửa thành công.");
         } else {
-            System.out.println("==> Không tìm thấy ID.");
+            System.out.println("Không tìm thấy ID sản phẩm.");
         }
     }
 
@@ -41,9 +41,9 @@ public class ProductController {
         int id = Integer.parseInt(sc.nextLine());
         boolean success = service.deleteProduct(id);
         if (success) {
-            System.out.println("==> Đã xóa sản phẩm.");
+            System.out.println("Đã xóa sản phẩm.");
         } else {
-            System.out.println("==> Không tìm thấy ID.");
+            System.out.println("Không tìm thấy ID.");
         }
     }
 
@@ -60,7 +60,7 @@ public class ProductController {
         if (p != null) {
             System.out.println(p);
         } else {
-            System.out.println("==> Không tìm thấy sản phẩm.");
+            System.out.println("Không tìm thấy sản phẩm.");
         }
     }
 
