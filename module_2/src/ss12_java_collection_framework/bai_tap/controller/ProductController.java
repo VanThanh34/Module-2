@@ -6,38 +6,10 @@ import module_2.src.ss12_java_collection_framework.bai_tap.service.ProductServic
 import java.util.Scanner;
 
 public class ProductController {
-    Scanner sc = new Scanner(System.in);
-    ProductService service = new ProductService();
+    private final ProductService service = new ProductService();
+    private final Scanner sc = new Scanner(System.in);
 
-    public void menu() {
-        int choice;
-        do {
-            System.out.println("==========MENU==========");
-            System.out.println("1. Thêm sản phẩm");
-            System.out.println("2. Sửa sản phẩm");
-            System.out.println("3. Xóa sản phẩm");
-            System.out.println("4. Hiển thị sản phẩm");
-            System.out.println("5. Tìm kiếm sản phẩm");
-            System.out.println("6. Sắp xếp sản phẩm");
-            System.out.println("7. Thoát");
-            System.out.print("Mời nhập vào lựa chọn của bạn: ");
-            choice = Integer.parseInt(sc.nextLine());
-
-            switch (choice) {
-                case 1 -> add();
-                case 2 -> update();
-                case 3 -> delete();
-                case 4 -> display();
-                case 5 -> search();
-                case 6 -> sort();
-                case 7 -> System.out.print("Hẹn gặp lại!");
-            }
-        } while (choice != 7);
-
-
-    }
-
-    private void add() {
+    public void add() {
         System.out.print("Nhập ID: ");
         int id = Integer.parseInt(sc.nextLine());
         System.out.print("Nhập tên: ");
@@ -48,7 +20,7 @@ public class ProductController {
         System.out.println("==> Đã thêm sản phẩm.");
     }
 
-    private void update() {
+    public void update() {
         System.out.print("Nhập ID cần sửa: ");
         int id = Integer.parseInt(sc.nextLine());
         System.out.print("Nhập tên mới: ");
@@ -64,7 +36,7 @@ public class ProductController {
         }
     }
 
-    private void delete() {
+    public void delete() {
         System.out.print("Nhập ID cần xóa: ");
         int id = Integer.parseInt(sc.nextLine());
         boolean success = service.deleteProduct(id);
@@ -75,13 +47,13 @@ public class ProductController {
         }
     }
 
-    private void display() {
+    public void display() {
         for (Product p : service.getAllProducts()) {
             System.out.println(p);
         }
     }
 
-    private void search() {
+    public void search() {
         System.out.print("Nhập ID cần tìm: ");
         int id = Integer.parseInt(sc.nextLine());
         Product p = service.searchById(id);
@@ -92,7 +64,7 @@ public class ProductController {
         }
     }
 
-    private void sort() {
+    public void sort() {
         System.out.println("1. Tăng dần theo giá");
         System.out.println("2. Giảm dần theo giá");
         int opt = Integer.parseInt(sc.nextLine());
@@ -103,5 +75,4 @@ public class ProductController {
         }
         display();
     }
-
 }
