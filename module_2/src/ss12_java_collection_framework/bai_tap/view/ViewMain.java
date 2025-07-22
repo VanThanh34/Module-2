@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class ViewMain {
 
+
     public static void main(String[] args) {
         ProductController controller = new ProductController();
         Scanner sc = new Scanner(System.in);
