@@ -1,6 +1,7 @@
 package module_2.src.mvc.repository;
 
 
+
 import module_2.src.mvc.entity.Student;
 
 import java.util.ArrayList;
@@ -12,5 +13,27 @@ public class StudentRepository {
 
     public List<Student> getStudents() {
         return students;
+    }
+
+    public void add(Student student) {
+        students.add(student);
+    }
+
+    public Student findById(int id) {
+        for (Student student : students) {
+            if (student.getCode() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public void deleteById(int id) {
+        for (Student student : students) {
+            if (student.getCode() == id) {
+                students.remove(student);
+                break;
+            }
+        }
     }
 }

@@ -1,8 +1,13 @@
 package module_2.src.mvc.view;
 
+
+
 import module_2.src.mvc.controller.StudentController;
 import module_2.src.mvc.entity.Student;
 
+import java.util.Collections;
+
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -48,16 +53,47 @@ public class MainView {
                     if(students.isEmpty()) {
                         System.out.println("Danh sách rỗng");
                     } else {
+//                        Lớp vô danh
+                        Collections.sort(students, new Comparator<Student>() {
+                            @Override
+                            public int compare(Student o1, Student o2) {
+                                return 0;
+                            }
+                        });
                         for (Student student : students) {
                             System.out.println(student);
                         }
                     }
                     break;
+                case 2:
+                    Student student = inputStudent();
+                    studentController.add(student);
+                    break;
+                case 4:
+                    System.out.print("Nhập id muốn xóa");
+                    int id = scanner.nextInt();
+                    Student temp = studentController.findById(id);
+                    if(temp == null) {
+                        System.out.println("Không tồn tại");
+                    } else {
+                        System.out.println("Thông tin của học sinh: "+ temp.toString());
+                        System.out.print("Bạn có chắc muốn xóa. Bấm Y để xác nhận");
+                        String confirm = scanner.nextLine();
+                        if(confirm.equals("y")) {
+                            studentController.deleteById(id);
+                        }
 
+                    }
+                  break;
                 case 5:
                     return;
             }
         }
+    }
+
+    public static Student inputStudent() {
+
+        return null;
     }
 
 
