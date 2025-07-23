@@ -1,13 +1,13 @@
 package module_2.src.ss12_java_collection_framework.bai_tap.controller;
 
 import module_2.src.ss12_java_collection_framework.bai_tap.entity.Product;
-import module_2.src.ss12_java_collection_framework.bai_tap.repository.ProductRepository;
-import module_2.src.ss12_java_collection_framework.bai_tap.service.IProductService;
 import module_2.src.ss12_java_collection_framework.bai_tap.service.ProductService;
 import module_2.src.ss12_java_collection_framework.bai_tap.view.ProductView;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
-;
+
 
 public class ProductController {
     private final static ProductService service = new ProductService();
@@ -30,10 +30,10 @@ public class ProductController {
                 switch (choice) {
                     case 1 -> add();
                     case 2 -> update();
-//                    case 3 -> delete();
+                    case 3 -> delete();
                     case 4 -> display();
-//                    case 5 -> search();
-//                    case 6 -> sort();*/
+                    case 5 -> search();
+                    case 6 -> sort();
                     case 7 -> {
                         System.out.print("Hẹn gặp lại!");
                         return;
@@ -52,24 +52,26 @@ public class ProductController {
     }
 
     public static void update() {
-        int id = ProductView.inputId();
+        int idUpdate = ProductView.inputId();
 
-        Product product = service.searchById(id);
+        Product product = service.searchById(idUpdate);
         ProductView.updateProduct(product);
-       service.updateById(id,product);
+        service.updateById(idUpdate, product);
         System.out.println("Đã sửa thành công!");
     }
-//
-//    public static void delete() {
-//        System.out.print("Nhập ID cần xóa: ");
-//        int id = Integer.parseInt(sc.nextLine());
-//        boolean success = service.deleteProduct(id);
-//        if (success) {
-//            System.out.println("Đã xóa sản phẩm.");
-//        } else {
-//            System.out.println("Không tìm thấy ID.");
-//        }
-//    }
+
+    public static void delete() {
+        int idDelete = ProductView.deleteProduct();
+        if (idDelete != -1) {
+            boolean choice = service.delete(idDelete);
+            if (choice) {
+                System.out.println("Đã xóa thành công!");
+            } else {
+                System.out.println("không tìm thấy");
+            }
+        }
+
+    }
 
     public static void display() {
         for (Product p : service.findAll()) {
@@ -77,26 +79,49 @@ public class ProductController {
         }
     }
 
-//    public static void search() {
-//        System.out.print("Nhập ID cần tìm: ");
-//        int id = Integer.parseInt(sc.nextLine());
-//        Product p = service.searchById(id);
-//        if (p != null) {
-//            System.out.println(p);
-//        } else {
-//            System.out.println("Không tìm thấy sản phẩm.");
-//        }
-//    }
-//
-//    public static void sort() {
-//        System.out.println("1. Tăng dần theo giá");
-//        System.out.println("2. Giảm dần theo giá");
-//        int opt = Integer.parseInt(sc.nextLine());
-//        if (opt == 1) {
-//            service.sortByPriceAscending();
-//        } else {
-//            service.sortByPriceDescending();
-//        }
-//        display();
-//    }
+    public static void search() {
+        int idSearch = ProductView.searchById();
+        Product p = service.searchById(idSearch);
+        if (p != null) {
+            System.out.println(p);
+        } else {
+            System.out.println("Không tìm thấy sản phẩm.");
+        }
+    }
+
+    public static void sort() {
+        boolean check = true;
+        while (check) {
+            List<Product> product = service.findAll();
+            System.out.println("""
+                    ============================
+                    1. Sắp xếp tăng dần theo giá
+                    2. Sắp xếp giảm dần theo giá
+                    3. Thoát
+                    ============================
+                    """);
+            System.out.print("Nhập lựa chọn: ");
+            int choice = Integer.parseInt(sc.nextLine());
+            switch (choice) {
+                case 1:
+                    product.sort(Comparator.comparingDouble(Product::getPrice));
+                    for (Product p : product) {
+                        System.out.println(p);
+                    }
+                    break;
+                case 2:
+                    product.sort(Comparator.comparingDouble(Product::getPrice).reversed());
+                    for (Product p : product) {
+                        System.out.println(p);
+                    }
+                    break;
+                case 3:
+                    check = false;
+                    break;
+                default:
+                    System.out.println("Vui lòng nhập đúng lựa chọn.");
+            }
+        }
+    }
+
 }

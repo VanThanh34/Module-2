@@ -27,48 +27,20 @@ public class ProductView {
     }
 
     public static int inputId(){
-        System.out.print("nhập id cần tìm: ");
-        int id = sc.nextInt();
-        sc.nextLine();
+        System.out.print("Nhập ID cần tìm: ");
+        int id = Integer.parseInt(sc.nextLine());
         return  id;
     }
-//    public boolean deleteProduct(int id) {
-//        int index = findIndexById(id);
-//        if (index != -1) {
-//            repository.getProducts().remove(index);
-//            return true;
-//        }
-//        return false;
-//    }
 
-//    public List<Product> getAllProducts() {
-//        return repository.getProducts();
-//    }
-//
-//    public Product searchById(int id) {
-//        for (Product p : repository.getProducts()) {
-//            if (p.getId() == id) {
-//                return p;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    public void sortByPriceAscending() {
-//        repository.getProducts().sort(Comparator.comparingDouble(Product::getPrice));
-//    }
-//
-//    public void sortByPriceDescending() {
-//        repository.getProducts().sort((a, b) -> Double.compare(b.getPrice(), a.getPrice()));
-//    }
-//
-//    public int findIndexById(int id) {
-//        List<Product> products = repository.getProducts();
-//        for (int i = 0; i < products.size(); i++) {
-//            if (products.get(i).getId() == id) {
-//                return i;
-//            }
-//        }
-//        return -1;
-//    }
+    public static int deleteProduct() {
+        System.out.print("Nhập ID cần xóa: ");
+        int id = Integer.parseInt(sc.nextLine());
+        return id;
+    }
+
+    public static int searchById() {
+        return inputId();
+    }
+
+
 }
