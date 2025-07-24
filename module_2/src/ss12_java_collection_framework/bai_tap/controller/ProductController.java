@@ -1,5 +1,6 @@
 package module_2.src.ss12_java_collection_framework.bai_tap.controller;
 
+import module_2.src.common.InputInteger;
 import module_2.src.ss12_java_collection_framework.bai_tap.entity.Product;
 import module_2.src.ss12_java_collection_framework.bai_tap.service.ProductService;
 import module_2.src.ss12_java_collection_framework.bai_tap.view.ProductView;
@@ -25,7 +26,7 @@ public class ProductController {
                 System.out.println("6. Sắp xếp sản phẩm");
                 System.out.println("7. Thoát");
                 System.out.print("Mời nhập vào lựa chọn của bạn: ");
-                int choice = Integer.parseInt(sc.nextLine());
+                int choice =InputInteger.inputInteger();
 
                 switch (choice) {
                     case 1 -> add();
