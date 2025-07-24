@@ -15,5 +15,4 @@ public interface IProductService {
 
     void updateById(int id, Product product);
 
-    void save(Product product);
 }

@@ -41,6 +41,6 @@ public class Product {
     }
     @Override
     public String toString() {
-        return String.format("| ID: %-4d | Tên: %-20s | Giá: %,.2f VND |", id, name, price);
+        return String.format("| ID: %-4d | Tên: %-10s | Giá: %,.2f VND |", id, name, price);
     }
 }

@@ -28,12 +28,25 @@ public class ProductRepository implements IProductRepository {
     @Override
     public void add(Product product) {
         products.add(product);
-    }
+        File file = new File("module_2/src/ss12_java_collection_framework/bai_tap/data/Product.csv");
+        try (
+                FileWriter fileWriter = new FileWriter(file, true);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        ) {
 
+            bufferedWriter.write(productToString(product));
+            bufferedWriter.newLine();
+        } catch (IOException e) {
+            System.out.println("Lỗi ghi file");
+        }
+    }
+    private String productToString(Product product){
+        return product.getId()+","+product.getName()+","+product.getPrice();
+    }
     @Override
     public boolean delete(int id) {
         Product product = searchById(id);
-        if(product != null){
+        if (product != null) {
             products.remove(product);
             return true;
         }
@@ -42,8 +55,8 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public Product searchById(int id) {
-        for(Product p : products){
-            if(p.getId() == id){
+        for (Product p : products) {
+            if (p.getId() == id) {
                 return p;
             }
         }
@@ -57,17 +70,6 @@ public class ProductRepository implements IProductRepository {
                 products.set(i, product);
                 break;
             }
-        }
-    }
-    public void save(Product product){
-        File file = new File("module_2/src/ss12_java_collection_framework/bai_tap/data/Product.csv");
-        try {
-            FileWriter fileWriter = new FileWriter(file);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(product.toString());
-            bufferedWriter.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi ghi file");
         }
     }
 }

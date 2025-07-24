@@ -36,9 +36,6 @@ public class ProductService implements IProductService {
         repository.updateById(id, product);
     }
 
-    @Override
-    public void save(Product product) {
-        repository.save(product);
-    }
+
 
 }
