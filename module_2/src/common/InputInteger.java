@@ -10,7 +10,7 @@ public class InputInteger {
             try {
                 choice = Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số nguyên dương. Mời nhập lại!");
+                System.out.print("Vui lòng nhập số nguyên dương. Mời nhập lại: ");
                 continue;
             }
             return choice;
