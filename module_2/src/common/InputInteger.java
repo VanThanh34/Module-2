@@ -12,6 +12,9 @@ public class InputInteger {
             } catch (NumberFormatException e) {
                 System.out.print("Vui lòng nhập số nguyên dương. Mời nhập lại: ");
                 continue;
+            }catch (Exception e){
+                System.out.println("Lỗi không xác định!");
+                continue;
             }
             return choice;
         }
