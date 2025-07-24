@@ -7,12 +7,11 @@ import module_2.src.ss12_java_collection_framework.bai_tap.view.ProductView;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class ProductController {
     private final static ProductService service = new ProductService();
-    private final static Scanner sc = new Scanner(System.in);
+
 
     public static void displayMenu() {
         do {
@@ -26,7 +25,7 @@ public class ProductController {
                 System.out.println("6. Sắp xếp sản phẩm");
                 System.out.println("7. Thoát");
                 System.out.print("Mời nhập vào lựa chọn của bạn: ");
-                int choice =InputInteger.inputInteger();
+                int choice = InputInteger.inputInteger();
 
                 switch (choice) {
                     case 1 -> add();
@@ -39,6 +38,7 @@ public class ProductController {
                         System.out.print("Hẹn gặp lại!");
                         return;
                     }
+                    default -> System.out.println("Mời nhập đúng số trong menu!");
                 }
             } catch (NumberFormatException e) {
                 System.out.println(" Nhập sai định dạng! Vui lòng nhập số.");
@@ -102,7 +102,7 @@ public class ProductController {
                     ============================
                     """);
             System.out.print("Nhập lựa chọn: ");
-            int choice = Integer.parseInt(sc.nextLine());
+            int choice = InputInteger.inputInteger();
             switch (choice) {
                 case 1:
                     product.sort(Comparator.comparingDouble(Product::getPrice));
