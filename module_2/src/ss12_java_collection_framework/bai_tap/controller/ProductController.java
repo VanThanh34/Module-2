@@ -74,12 +74,11 @@ public class ProductController {
         System.out.println("Bạn có muốn xóa sản phẩm này không? (Y/N): ");
         String confirm = sc.nextLine();
         if(confirm.equalsIgnoreCase("Y")){
-            boolean successs = service.delete(idDelete);
-            if(successs){
+            boolean success = service.delete(idDelete);
+            if(success){
                 System.out.println("✅ Đã xóa sản phẩm thành công.");
-            }else{
-                System.out.println("❌ Xóa thất bại. Có thể sản phẩm đã bị xóa trước đó.");
             }
+
         } else {
             System.out.println("❎ Hủy xóa sản phẩm.");
         }
