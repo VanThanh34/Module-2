@@ -14,4 +14,6 @@ public interface IProductService {
     Product searchById(int id);
 
     void updateById(int id, Product product);
+
+    void save(Product product);
 }

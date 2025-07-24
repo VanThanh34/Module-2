@@ -2,6 +2,10 @@ package module_2.src.ss12_java_collection_framework.bai_tap.repository;
 
 import module_2.src.ss12_java_collection_framework.bai_tap.entity.Product;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +13,11 @@ public class ProductRepository implements IProductRepository {
     private final static List<Product> products = new ArrayList<>();
 
 
-    static {
-        products.add(new Product(1, "Quạt", 13.5));
-        products.add(new Product(2, "Tủ lạnh", 50.0));
-        products.add(new Product(3, "Máy giặt", 30.0));
-    }
+//    static {
+//        products.add(new Product(1, "Quạt", 13.5));
+//        products.add(new Product(2, "Tủ lạnh", 50.0));
+//        products.add(new Product(3, "Máy giặt", 30.0));
+//    }
 
 
     @Override
@@ -53,6 +57,17 @@ public class ProductRepository implements IProductRepository {
                 products.set(i, product);
                 break;
             }
+        }
+    }
+    public void save(Product product){
+        File file = new File("module_2/src/ss12_java_collection_framework/bai_tap/data/Product.csv");
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(product.toString());
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi ghi file");
         }
     }
 }

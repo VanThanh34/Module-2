@@ -35,4 +35,10 @@ public class ProductService implements IProductService {
     public void updateById(int id, Product product) {
         repository.updateById(id, product);
     }
+
+    @Override
+    public void save(Product product) {
+        repository.save(product);
+    }
+
 }
