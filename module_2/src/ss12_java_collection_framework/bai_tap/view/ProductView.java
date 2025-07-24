@@ -1,5 +1,6 @@
 package module_2.src.ss12_java_collection_framework.bai_tap.view;
 
+import module_2.src.common.InputInteger;
 import module_2.src.ss12_java_collection_framework.bai_tap.entity.Product;
 
 import java.util.Scanner;
@@ -28,14 +29,12 @@ public class ProductView {
 
     public static int inputId(){
         System.out.print("Nhập ID cần tìm: ");
-        int id = Integer.parseInt(sc.nextLine());
-        return  id;
+        return InputInteger.inputInteger();
     }
 
     public static int deleteProduct() {
         System.out.print("Nhập ID cần xóa: ");
-        int id = Integer.parseInt(sc.nextLine());
-        return id;
+        return InputInteger.inputInteger();
     }
 
     public static int searchById() {

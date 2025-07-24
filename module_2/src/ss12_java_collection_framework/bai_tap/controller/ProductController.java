@@ -7,11 +7,12 @@ import module_2.src.ss12_java_collection_framework.bai_tap.view.ProductView;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class ProductController {
     private final static ProductService service = new ProductService();
-
+    private final static Scanner sc = new Scanner(System.in);
 
     public static void displayMenu() {
         do {
@@ -63,13 +64,24 @@ public class ProductController {
 
     public static void delete() {
         int idDelete = ProductView.deleteProduct();
-        if (idDelete != -1) {
-            boolean choice = service.delete(idDelete);
-            if (choice) {
-                System.out.println("Đã xóa thành công!");
-            } else {
-                System.out.println("không tìm thấy");
+        Product productToDelete = service.searchById(idDelete);
+        if(productToDelete == null){
+            System.out.println("Không tìm thấy sản phẩm có ID: " + idDelete);
+            return;
+        }
+        System.out.println("Thông tin sản phẩm sẽ bị xóa: ");
+        System.out.println(productToDelete);
+        System.out.println("Bạn có muốn xóa sản phẩm này không? (Y/N): ");
+        String confirm = sc.nextLine();
+        if(confirm.equalsIgnoreCase("Y")){
+            boolean successs = service.delete(idDelete);
+            if(successs){
+                System.out.println("✅ Đã xóa sản phẩm thành công.");
+            }else{
+                System.out.println("❌ Xóa thất bại. Có thể sản phẩm đã bị xóa trước đó.");
             }
+        } else {
+            System.out.println("❎ Hủy xóa sản phẩm.");
         }
 
     }
