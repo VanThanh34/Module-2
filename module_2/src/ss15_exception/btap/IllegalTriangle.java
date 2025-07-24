@@ -1,6 +1,6 @@
-package module_2.src.ss15_exception.demo;
+package module_2.src.ss15_exception.btap;
 import java.util.Scanner;
-public class demo {
+public class IllegalTriangle {
 
 
         public static void main(String[] args) {
@@ -33,7 +33,7 @@ public class demo {
 
     public static class IllegalTriangleException extends Exception {
         public IllegalTriangleException(String message) {
-            super(message);  // gọi constructor lớp cha Exception
+            super(message);
         }
     }
 
