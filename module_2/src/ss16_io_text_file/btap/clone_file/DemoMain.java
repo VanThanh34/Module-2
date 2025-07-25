@@ -4,6 +4,6 @@ public class DemoMain {
     public static void main(String[] args) {
         CloneFlie cloneFlie = new CloneFlie();
         cloneFlie.writeFile();
-        cloneFlie.ReadFile(CloneFlie.UrlFileTarget);
+        cloneFlie.readFile(CloneFlie.UrlFileTarget);
     }
 }

@@ -7,7 +7,7 @@ public class CloneFlie {
     public static final String UrlFileSource = "module_2/src/ss16_io_text_file/btap/clone_file/sourceFile.csv";
     public static final String UrlFileTarget = "module_2/src/ss16_io_text_file/btap/clone_file/targetFile.csv";
 
-    public void ReadFile(String string) {
+    public void readFile(String string) {
         File file = new File(string);
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
