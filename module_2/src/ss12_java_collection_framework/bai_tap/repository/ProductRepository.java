@@ -24,7 +24,7 @@ public class ProductRepository implements IProductRepository {
         List<Product> products = new ArrayList<>();
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line = null;
+            String line ;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] temp = line.trim().split(",");
                 Product product = new Product(Integer.parseInt(temp[0]), temp[1], Double.parseDouble(temp[2]));
@@ -45,7 +45,7 @@ public class ProductRepository implements IProductRepository {
         File file = new File("module_2/src/ss12_java_collection_framework/bai_tap/data/Product.csv");
         try (
                 FileWriter fileWriter = new FileWriter(file, true);
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)
         ) {
 
             bufferedWriter.write(productToString(product));
