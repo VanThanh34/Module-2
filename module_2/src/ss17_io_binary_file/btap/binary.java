@@ -6,7 +6,7 @@ public class binary{
     public static void main(String[] args) {
         Product product1 = new Product(1,"Quạt", 23.5, "Vietnam", "còn hàng");
         Product product2 = new Product(2,"Quạt lạnh", 43.5, "Vietnam", "hết hàng");
-        File file = new File("src/ss17_io_binary_file/btap/product.dat");
+        File file = new File("src/ss17_io_binary_file/btap/product.txt");
         try (FileOutputStream fileOutputStream = new FileOutputStream(file);
              ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream)){
             oos.writeObject(product1);
