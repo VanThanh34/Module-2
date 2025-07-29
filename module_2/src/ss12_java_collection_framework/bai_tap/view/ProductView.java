@@ -1,6 +1,7 @@
 package ss12_java_collection_framework.bai_tap.view;
 
-import module_2.src.common.InputInteger;
+
+import common.InputInteger;
 import ss12_java_collection_framework.bai_tap.entity.Product;
 
 
