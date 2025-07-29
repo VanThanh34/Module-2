@@ -1,4 +1,4 @@
-package module_2.src.ss14_sap_xep.btap;
+package ss14_sap_xep.btap;
 
 import java.util.Arrays;
 import java.util.Scanner;

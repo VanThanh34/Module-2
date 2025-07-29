@@ -1,4 +1,4 @@
-package module_2.src.ss13_giai_thuat.bai_tap.tinh_do_phuc_tap;
+package ss13_giai_thuat.bai_tap.tinh_do_phuc_tap;
 
 import java.util.Scanner;
 

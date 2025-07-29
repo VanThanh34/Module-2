@@ -1,4 +1,4 @@
-package module_2.src.ss11_stack_queue.bai_tap.palindrome;
+package ss11_stack_queue.bai_tap.palindrome;
 
 import java.util.LinkedList;
 import java.util.Queue;

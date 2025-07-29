@@ -1,4 +1,4 @@
-package module_2.src.ss11_stack_queue.bai_tap.stack;
+package ss11_stack_queue.bai_tap.stack;
 
 
 import java.util.Arrays;

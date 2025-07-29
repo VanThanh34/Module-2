@@ -1,4 +1,4 @@
-package module_2.src.ss11_stack_queue.bai_tap.convert_to_binary;
+package ss11_stack_queue.bai_tap.convert_to_binary;
 
 import java.util.Scanner;
 import java.util.Stack;

@@ -1,9 +1,9 @@
-package module_2.src.ss12_java_collection_framework.bai_tap.controller;
+package ss12_java_collection_framework.bai_tap.controller;
 
 import module_2.src.common.InputInteger;
-import module_2.src.ss12_java_collection_framework.bai_tap.entity.Product;
-import module_2.src.ss12_java_collection_framework.bai_tap.service.ProductService;
-import module_2.src.ss12_java_collection_framework.bai_tap.view.ProductView;
+import ss12_java_collection_framework.bai_tap.service.ProductService;
+import ss12_java_collection_framework.bai_tap.view.ProductView;
+import ss12_java_collection_framework.bai_tap.entity.Product;
 
 import java.util.Comparator;
 import java.util.List;
@@ -65,7 +65,7 @@ public class ProductController {
     public static void delete() {
         int idDelete = ProductView.deleteProduct();
         Product productToDelete = service.searchById(idDelete);
-        if(productToDelete == null){
+        if (productToDelete == null) {
             System.out.println("Không tìm thấy sản phẩm có ID: " + idDelete);
             return;
         }
@@ -73,9 +73,9 @@ public class ProductController {
         System.out.println(productToDelete);
         System.out.println("Bạn có muốn xóa sản phẩm này không? (Y/N): ");
         String confirm = sc.nextLine();
-        if(confirm.equalsIgnoreCase("Y")){
+        if (confirm.equalsIgnoreCase("Y")) {
             boolean success = service.delete(idDelete);
-            if(success){
+            if (success) {
                 System.out.println("✅ Đã xóa sản phẩm thành công.");
             }
 

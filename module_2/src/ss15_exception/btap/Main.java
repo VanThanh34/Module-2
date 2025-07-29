@@ -1,4 +1,4 @@
-package module_2.src.ss15_exception.btap;
+package ss15_exception.btap;
 
 import java.util.Scanner;
 

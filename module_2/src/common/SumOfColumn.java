@@ -1,4 +1,4 @@
-package module_2.src.common;
+package common;
 
 import java.util.Scanner;
 

@@ -1,6 +1,4 @@
-package module_2.src.ss10_dsa_list.bai_tap.array_list;
-
-
+package ss10_dsa_list.bai_tap.array_list;
 
 
 public class MyListTest {

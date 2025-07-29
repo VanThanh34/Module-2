@@ -1,8 +1,10 @@
-package module_2.src.ss12_java_collection_framework.bai_tap.service;
+package ss12_java_collection_framework.bai_tap.service;
 
-import module_2.src.ss12_java_collection_framework.bai_tap.entity.Product;
-import module_2.src.ss12_java_collection_framework.bai_tap.repository.ProductRepository;
 
+
+
+import ss12_java_collection_framework.bai_tap.entity.Product;
+import ss12_java_collection_framework.bai_tap.repository.ProductRepository;
 
 import java.util.List;
 

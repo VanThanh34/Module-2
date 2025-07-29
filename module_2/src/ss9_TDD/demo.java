@@ -1,4 +1,4 @@
-package module_2.src.ss9_TDD;
+package ss9_TDD;
 
 public class demo {
 

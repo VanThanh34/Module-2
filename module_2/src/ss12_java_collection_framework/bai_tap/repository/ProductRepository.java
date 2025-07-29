@@ -1,6 +1,8 @@
-package module_2.src.ss12_java_collection_framework.bai_tap.repository;
+package ss12_java_collection_framework.bai_tap.repository;
 
-import module_2.src.ss12_java_collection_framework.bai_tap.entity.Product;
+
+
+import ss12_java_collection_framework.bai_tap.entity.Product;
 
 import java.io.*;
 import java.util.ArrayList;

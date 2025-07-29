@@ -1,4 +1,4 @@
-package module_2.src.ss12_java_collection_framework.bai_tap.entity;
+package ss12_java_collection_framework.bai_tap.entity;
 
 public class Product {
     private int id;

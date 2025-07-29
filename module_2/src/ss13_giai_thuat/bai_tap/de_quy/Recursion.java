@@ -1,4 +1,4 @@
-package module_2.src.ss13_giai_thuat.bai_tap.de_quy;
+package ss13_giai_thuat.bai_tap.de_quy;
 
 import java.util.Arrays;
 import java.util.Scanner;

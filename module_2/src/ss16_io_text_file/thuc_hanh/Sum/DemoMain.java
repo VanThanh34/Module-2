@@ -1,4 +1,4 @@
-package module_2.src.ss16_io_text_file.thuc_hanh.Sum;
+package ss16_io_text_file.thuc_hanh.Sum;
 
 import java.util.Scanner;
 

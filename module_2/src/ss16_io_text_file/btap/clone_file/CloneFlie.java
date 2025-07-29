@@ -1,4 +1,4 @@
-package module_2.src.ss16_io_text_file.btap.clone_file;
+package ss16_io_text_file.btap.clone_file;
 
 import java.io.*;
 import java.util.Arrays;

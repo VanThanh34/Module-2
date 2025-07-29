@@ -1,4 +1,4 @@
-package module_2.src.ss11_stack_queue.bai_tap.map;
+package ss11_stack_queue.bai_tap.map;
 
 
 import java.util.Map;
