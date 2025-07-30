@@ -1,7 +1,7 @@
-package module_2.src.ss3_mang_va_phuong_thuc;
+package ss3_mang_va_phuong_thuc;
 
 
-import module_2.src.common.TwoDimensionalArray;
+import common.TwoDimensionalArray;
 
 import java.util.Arrays;
 import java.util.Scanner;
