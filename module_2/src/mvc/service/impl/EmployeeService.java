@@ -1,7 +1,6 @@
 package mvc.service.impl;
 
-
-import module_2.src.mvc.entity.Employee;
+import mvc.entity.Employee;
 import mvc.service.IEmployeeService;
 
 

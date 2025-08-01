@@ -1,11 +1,11 @@
 package mvc.service;
 
 
-import module_2.src.mvc.entity.Employee;
+import mvc.entity.Employee;
 
 import java.util.List;
 
-public interface IEmployeeService extends module_2.src.mvc.service.IService<Employee> {
+public interface IEmployeeService extends IService<Employee> {
     List<Employee> getAll();
 
     void add(Employee e);

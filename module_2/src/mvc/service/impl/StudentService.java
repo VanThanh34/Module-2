@@ -1,8 +1,9 @@
 package mvc.service.impl;
 
 
-import module_2.src.mvc.entity.Student;
-import module_2.src.mvc.repository.StudentRepository;
+
+import mvc.entity.Student;
+import mvc.repository.StudentRepository;
 import mvc.service.IStudentService;
 
 
