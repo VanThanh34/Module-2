@@ -1,8 +1,6 @@
-package module_2.src.mvc.repository;
+package mvc.repository;
 
-
-
-import module_2.src.mvc.entity.Student;
+import mvc.entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;

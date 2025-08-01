@@ -3,7 +3,8 @@ package mvc.service.impl;
 
 import module_2.src.mvc.entity.Student;
 import module_2.src.mvc.repository.StudentRepository;
-import module_2.src.mvc.service.IStudentService;
+import mvc.service.IStudentService;
+
 
 import java.util.List;
 

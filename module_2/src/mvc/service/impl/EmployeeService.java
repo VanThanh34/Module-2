@@ -2,7 +2,7 @@ package mvc.service.impl;
 
 
 import module_2.src.mvc.entity.Employee;
-import module_2.src.mvc.service.IEmployeeService;
+import mvc.service.IEmployeeService;
 
 
 import java.util.List;

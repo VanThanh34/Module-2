@@ -1,4 +1,4 @@
-package module_2.src.mvc.entity;
+package mvc.entity;
 
 public class Student extends Person implements Comparable<Student> {
 
@@ -25,5 +25,10 @@ public class Student extends Person implements Comparable<Student> {
         } else {
             return 0;
         }
+    }
+
+    public int getCode() {
+
+        return 0;
     }
 }

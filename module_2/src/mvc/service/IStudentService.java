@@ -1,7 +1,7 @@
-package module_2.src.mvc.service;
+package mvc.service;
 
 
-import module_2.src.mvc.entity.Student;
+import mvc.entity.Student;
 
 import java.util.List;
 

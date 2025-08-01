@@ -1,4 +1,4 @@
-package module_2.src.mvc.service;
+package mvc.service;
 
 public interface Worker {
 

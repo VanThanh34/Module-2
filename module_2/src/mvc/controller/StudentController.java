@@ -1,15 +1,14 @@
 package mvc.controller;
 
-
-import module_2.src.mvc.entity.Student;
-import module_2.src.mvc.service.IStudentService;
+import mvc.entity.Student;
+import mvc.service.IStudentService;
 import mvc.service.impl.StudentService;
-
 
 import java.util.List;
 
+
 public class StudentController {
-    private static IStudentService studentService = new StudentService();
+    private static final IStudentService studentService = new StudentService();
     public List<Student> getAll() {
         List<Student> students = studentService.getAll();
         return students;

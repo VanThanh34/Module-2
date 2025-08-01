@@ -1,4 +1,4 @@
-package module_2.src.mvc.entity;
+package mvc.entity;
 
 public abstract class Person {
     private int code;
