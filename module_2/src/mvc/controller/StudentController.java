@@ -1,9 +1,10 @@
-package module_2.src.mvc.controller;
+package mvc.controller;
 
 
 import module_2.src.mvc.entity.Student;
 import module_2.src.mvc.service.IStudentService;
-import module_2.src.mvc.service.impl.StudentService;
+import mvc.service.impl.StudentService;
+
 
 import java.util.List;
 

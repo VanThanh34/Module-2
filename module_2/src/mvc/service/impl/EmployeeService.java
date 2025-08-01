@@ -1,4 +1,4 @@
-package module_2.src.mvc.service.impl;
+package mvc.service.impl;
 
 
 import module_2.src.mvc.entity.Employee;

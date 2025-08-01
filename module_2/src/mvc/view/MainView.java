@@ -1,9 +1,8 @@
-package module_2.src.mvc.view;
+package mvc.view;
 
 
-
-import module_2.src.mvc.controller.StudentController;
 import module_2.src.mvc.entity.Student;
+import mvc.controller.StudentController;
 
 import java.util.Collections;
 
