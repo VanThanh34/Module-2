@@ -109,7 +109,7 @@ public class MenuView {
         double price = Double.parseDouble(sc.nextLine());
         System.out.print("Nhập số lượng trong kho: ");
         int quantity = InputInteger.inputInteger();
-        return new Product(id, quantity, price, name);
+        return new Product(id,name,price, quantity);
     }
 
 
@@ -129,6 +129,10 @@ public class MenuView {
         System.out.print("Nhập ID cần tìm: ");
         return InputInteger.inputInteger();
     }
+    public static int inputQuantity(){
+        System.out.print("Nhập số lượng bạn muốn mua: ");
+        return InputInteger.inputInteger();
+    }
 
     public static int deleteProduct() {
         System.out.print("Nhập ID cần xóa: ");
@@ -145,20 +149,25 @@ public class MenuView {
         System.out.println("╠════════════════════════════════════════╣");
         System.out.println("║ 1.  Mua sản phẩm                       ║");
         System.out.println("║ 2.  Thêm sản phẩm vào giỏ hàng         ║");
-        System.out.println("║ 3.  Quay lại menu Khách hàng           ║");
+        System.out.println("║ 3.  Xem giỏ hàng hiện tại              ║");
+        System.out.println("║ 4.  Quay lại menu Khách hàng           ║");
         System.out.println("╚════════════════════════════════════════╝");
         System.out.print("Mời nhập vào lựa chọn của bạn: ");
         int choice3 = InputInteger.inputInteger();
         switch (choice3) {
-            case 1:
-            case 2:
-            case 3:
-                displayMenuCustommer();
-                break;
-            default:
+            case 1 -> ProductController.buyProduct();
+            case 2 -> ProductController.addToCart();
+            case 3 -> {
+                ProductController.showCart();
+                ProductController.display();
+                System.out.println("===========================");
+                displayMenuBuy();
+            }
+            case 4 -> displayMenuCustommer();
+            default -> {
                 System.out.println("Vui lòng nhập số trong Menu");
                 System.out.println("============================");
-                break;
+            }
         }
     }
 }
