@@ -51,15 +51,16 @@ public class Product {
 
     @Override
     public String toString() {
+        String priceFormatted = String.format("%.2f đ", price);
         return """
             +--------------------------------------------------+
-            |                   PRODUCT INFO                   |
+            |                THÔNG TIN SẢN PHẨM                |
             +--------------------------------------------------+
             | ID       : %-37d |
-            | Name     : %-37s |
-            | Price    : %-37.2f |
-            | Quantity : %-37d |
+            | Tên      : %-37s |
+            | Giá      : %-37s |
+            | Số Lượng : %-37d |
             +--------------------------------------------------+
-            """.formatted(id, name, price, quantity);
+            """.formatted(id, name, priceFormatted, quantity);
     }
 }

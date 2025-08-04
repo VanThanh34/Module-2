@@ -19,8 +19,4 @@ public class CartItem {
     public double getTotalPrice() {
         return product.getPrice() * quantity;
     }
-    @Override
-    public String toString() {
-        return product.getName() + " | Số lượng: " + quantity + " | Tổng: " + getTotalPrice() + " VND";
-    }
 }

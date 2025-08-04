@@ -33,7 +33,7 @@ public class ProductController {
         Product product = service.searchById(idUpdate);
         MenuView.updateProduct(product);
         service.updateById(idUpdate, product);
-        System.out.println("Đã sửa thành công!");
+        System.out.println("✅ Đã sửa thành công!");
     }
 
     public static void delete() {
@@ -64,7 +64,7 @@ public class ProductController {
         if (p != null) {
             System.out.println(p);
         } else {
-            System.out.println("Không tìm thấy sản phẩm.");
+            System.out.println("❌ Không tìm thấy sản phẩm.");
         }
     }
     public static void buyProduct() {
@@ -76,6 +76,7 @@ public class ProductController {
 
     public static void addToCart() {
         int id = MenuView.inputId();
+        service.infoProduct(id);
         int quantity = MenuView.inputQuantity();
         String result = service.addToCart(id, quantity);
         System.out.println(result);
@@ -89,11 +90,28 @@ public class ProductController {
         if (cart.isEmpty()) {
             System.out.println("ĐANG TRỐNG.");
         } else {
+            System.out.println("+----+------------------------------+--------+------------+------------+");
+            System.out.println("| STT| Tên sản phẩm                 | SL     |  Đơn giá   | Thành tiền |");
+            System.out.println("+----+------------------------------+--------+------------+------------+");
+
+            int index = 1;
+            double total = 0;
             for (CartItem item : cart) {
-                System.out.println(item);
+                String name = item.getProduct().getName();
+                int quantity = item.getQuantity();
+                double price = item.getProduct().getPrice();
+                double totalPrice = item.getTotalPrice();
+                total += totalPrice;
+
+                System.out.printf("| %2d | %-28s | %6d | %10.2f | %10.2f |\n",
+                        index++, name, quantity, price, totalPrice);
             }
+
+            System.out.println("+----+------------------------------+--------+------------+------------+");
+            System.out.printf("Tổng cộng: %.2f đ\n", total);
         }
     }
+
 
     public static void checkoutCart() {
         List<CartItem> cart = ProductService.getCart();

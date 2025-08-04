@@ -139,6 +139,9 @@ public class ProductRepository implements IProductRepository {
         if (product.getQuantity() < quantity) {
             return "Số lượng sản phẩm không đủ trong kho.";
         }
+        if (quantity <= 0) {
+            return "Số lượng mua không hợp lệ!";
+        }
 
         product.setQuantity(product.getQuantity() - quantity);
         updateById(id, product);
@@ -190,5 +193,14 @@ public class ProductRepository implements IProductRepository {
 
         cart.clear();
         return true;
+    }
+
+    public void infoProduct(int id) {
+        List<Product> productList = findAll();
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == id) {
+                System.out.println(productList.get(i));
+            }
+        }
     }
 }

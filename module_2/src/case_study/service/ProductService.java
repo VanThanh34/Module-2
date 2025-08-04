@@ -62,4 +62,8 @@ public class ProductService implements IProductService{
     public static List<CartItem> getCart() {
         return repository.getCart();
     }
+
+    public void infoProduct(int id) {
+        repository.infoProduct(id);
+    }
 }
