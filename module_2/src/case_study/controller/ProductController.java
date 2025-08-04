@@ -69,6 +69,7 @@ public class ProductController {
     }
     public static void buyProduct() {
         int id = MenuView.inputId();
+        service.infoProduct(id);
         int quantity = MenuView.inputQuantity();
         String result = service.buyProduct(id, quantity);
         System.out.println(result);
@@ -91,12 +92,13 @@ public class ProductController {
             System.out.println("ĐANG TRỐNG.");
         } else {
             System.out.println("+----+------------------------------+--------+------------+------------+");
-            System.out.println("| STT| Tên sản phẩm                 | SL     |  Đơn giá   | Thành tiền |");
+            System.out.println("| ID| Tên sản phẩm                  |   SL   |  Đơn giá   | Thành tiền |");
             System.out.println("+----+------------------------------+--------+------------+------------+");
 
-            int index = 1;
+
             double total = 0;
             for (CartItem item : cart) {
+                int id = item.getProduct().getId();
                 String name = item.getProduct().getName();
                 int quantity = item.getQuantity();
                 double price = item.getProduct().getPrice();
@@ -104,7 +106,7 @@ public class ProductController {
                 total += totalPrice;
 
                 System.out.printf("| %2d | %-28s | %6d | %10.2f | %10.2f |\n",
-                        index++, name, quantity, price, totalPrice);
+                        id, name, quantity, price, totalPrice);
             }
 
             System.out.println("+----+------------------------------+--------+------------+------------+");
@@ -151,5 +153,16 @@ public class ProductController {
         } else {
             System.out.println("❌ Đã hủy thanh toán.");
         }
+    }
+
+    public static void changeFromCart() {
+        System.out.print("Nhập vào ID sản phẩm bạn muốn sửa: ");
+        int idDeleteCart = Integer.parseInt(sc.nextLine());
+        System.out.println(service.infoProductInCart(idDeleteCart));
+        System.out.print("Nhập số lượng bạn muốn sửa: ");
+        int quantityProductDelete = Integer.parseInt(sc.nextLine());
+        String result = service.changeFromCart(idDeleteCart, quantityProductDelete);
+        System.out.println(result);
+        showCart();
     }
 }

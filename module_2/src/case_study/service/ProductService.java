@@ -66,4 +66,11 @@ public class ProductService implements IProductService{
     public void infoProduct(int id) {
         repository.infoProduct(id);
     }
+
+    public String changeFromCart(int idDeleteCart, int quantityProductDelete) {
+        return repository.changeFromCart(idDeleteCart, quantityProductDelete);
+    }
+    public String infoProductInCart(int id){
+        return repository.infoProductInCart(id);
+    }
 }

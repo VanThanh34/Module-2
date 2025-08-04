@@ -197,10 +197,56 @@ public class ProductRepository implements IProductRepository {
 
     public void infoProduct(int id) {
         List<Product> productList = findAll();
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getId() == id) {
-                System.out.println(productList.get(i));
+        for (Product product : productList) {
+            if (product.getId() == id) {
+                System.out.println(product);
             }
         }
+    }
+
+    public String changeFromCart(int idDeleteCart, int quantityProductDelete) {
+        for (CartItem item : cart) {
+            if (item.getProduct().getId() == idDeleteCart) {
+                if (item.getQuantity() > quantityProductDelete) {
+                    cart.remove(item);
+                    cart.add(new CartItem(item.getProduct(), item.getQuantity() - quantityProductDelete));
+                    return "Đã giảm số lượng sản phẩm trong giỏ.";
+                } else if (item.getQuantity() == quantityProductDelete) {
+                    cart.remove(item);
+                    return "Đã xoá sản phẩm khỏi giỏ hàng.";
+                } else {
+                    return "Số lượng xoá lớn hơn số lượng trong giỏ.";
+                }
+            }
+        }
+        return "Sản phẩm không có trong giỏ.";
+    }
+
+    public String infoProductInCart(int id) {
+        for (CartItem item : cart) {
+            if (item.getProduct().getId() == id) {
+                String priceFormatted = String.format("%.2f đ", item.getProduct().getPrice());
+                String totalFormatted = String.format("%.2f đ", item.getTotalPrice());
+
+                return String.format("""
+                                +--------------------------------------------------+
+                                |             THÔNG TIN TRONG GIỎ HÀNG             |
+                                +--------------------------------------------------+
+                                | ID       : %-37d |
+                                | Name     : %-37s |
+                                | Price    : %-37s |
+                                | Số lượng : %-37d |
+                                | Tổng     : %-37s |
+                                +--------------------------------------------------+
+                                """,
+                        item.getProduct().getId(),
+                        item.getProduct().getName(),
+                        priceFormatted,
+                        item.getQuantity(),
+                        totalFormatted
+                );
+            }
+        }
+        return "Sản phẩm không tồn tại trong giỏ hàng.";
     }
 }

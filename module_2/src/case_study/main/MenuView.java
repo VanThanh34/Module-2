@@ -51,7 +51,10 @@ public class MenuView {
                 case 3 -> ProductController.delete();
                 case 4 -> ProductController.display();
                 case 5 -> ProductController.search();
-                case 6 -> displayMenu();
+                case 6 -> {
+                    displayMenu();
+                    return;
+                }
                 default -> System.out.println("Mời nhập vào đúng số trong MENU!");
             }
         }
@@ -77,7 +80,10 @@ public class MenuView {
                 }
                 case 2 -> ProductController.search();
                 case 3 -> phoneNumber();
-                case 4 -> displayMenu();
+                case 4 -> {
+                    displayMenu();
+                    return;
+                }
                 default -> System.out.println("Mời nhập vào đúng số trong MENU!");
             }
         }
@@ -198,8 +204,12 @@ public class MenuView {
         System.out.print("Mời nhập vào lựa chọn của bạn: ");
         int choice5 = InputInteger.inputInteger();
         switch (choice5) {
-//            case 1 ->
-            case 2 -> ProductController.addToCart();
+            case 1 -> ProductController.changeFromCart();
+            case 2 -> {
+                ProductController.addToCart();
+                displayMenuCart();
+            }
+
 //            case 3 ->
             case 4 -> ProductController.checkoutCart();
             case 5 -> displayMenuBuy();
