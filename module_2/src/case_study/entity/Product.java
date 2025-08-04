@@ -52,14 +52,14 @@ public class Product {
     @Override
     public String toString() {
         return """
-                +-----------------------------+
-                |         PRODUCT INFO        |
-                +-----------------------------+
-                | ID        : %-15d |
-                | Name      : %-15s |
-                | Price     : %-15.2f |
-                | Quantity  : %-15d |
-                +-----------------------------+
-                """.formatted(id, name, price, quantity);
+            +--------------------------------------------------+
+            |                   PRODUCT INFO                   |
+            +--------------------------------------------------+
+            | ID       : %-37d |
+            | Name     : %-37s |
+            | Price    : %-37.2f |
+            | Quantity : %-37d |
+            +--------------------------------------------------+
+            """.formatted(id, name, price, quantity);
     }
 }

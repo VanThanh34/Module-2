@@ -114,7 +114,6 @@ public class MenuView {
             System.out.print("Nhập số lượng trong kho: ");
             quantity = InputInteger.inputInteger();
         } catch (NumberFormatException e) {
-            System.out.println("Vui lòng nhập đúng giá trị!");
             return null;
         }
         return new Product(id, name, price, quantity);

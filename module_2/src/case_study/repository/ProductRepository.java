@@ -34,6 +34,11 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void add(Product product) {
+        if (product.getId() <= 0) {
+            System.out.println("ID sản phẩm phải lớn hơn 0. Vui lòng nhập lại.");
+            return;
+        }
+
         //kiểm tra id trùng lặp
         List<Product> productList = findAll();
         for (Product p : productList) {
