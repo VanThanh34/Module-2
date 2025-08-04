@@ -22,6 +22,11 @@ public class ProductService implements IProductService{
         }
         return instance;
     }
+
+    public static boolean checkout() {
+        return repository.checkout();
+    }
+
     @Override
     public List<Product> findAll() {
         return repository.findAll();
@@ -54,7 +59,7 @@ public class ProductService implements IProductService{
         return repository.addToCart(id,quantity);
     }
 
-    public List<CartItem> getCart() {
+    public static List<CartItem> getCart() {
         return repository.getCart();
     }
 }

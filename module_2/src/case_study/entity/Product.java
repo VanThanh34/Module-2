@@ -6,11 +6,11 @@ public class Product {
     private double price;
     private int quantity;
 
-    public Product(){
+    public Product() {
 
     }
 
-    public Product(int id, String name, double price, int quantity ) {
+    public Product(int id, String name, double price, int quantity) {
         this.id = id;
         this.quantity = quantity;
         this.price = price;
@@ -51,11 +51,15 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                '}';
+        return """
+                +-----------------------------+
+                |         PRODUCT INFO        |
+                +-----------------------------+
+                | ID        : %-15d |
+                | Name      : %-15s |
+                | Price     : %-15.2f |
+                | Quantity  : %-15d |
+                +-----------------------------+
+                """.formatted(id, name, price, quantity);
     }
 }

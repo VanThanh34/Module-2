@@ -59,7 +59,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     private String productToString(Product product) {
-        return product.getId() + "," + product.getName() + "," + product.getPrice() + "," + product.getQuantity()   ;
+        return product.getId() + "," + product.getName() + "," + product.getPrice() + "," + product.getQuantity();
     }
 
     @Override
@@ -161,5 +161,29 @@ public class ProductRepository implements IProductRepository {
 
     public List<CartItem> getCart() {
         return cart;
+    }
+
+    public boolean checkout() {
+        List<CartItem> cart = getCart();
+
+        for (CartItem item : cart) {
+            Product product = item.getProduct();
+            Product storeProduct = searchById(product.getId());
+
+            if (storeProduct == null || storeProduct.getQuantity() < item.getQuantity()) {
+                return false;
+            }
+        }
+
+        for (CartItem item : cart) {
+            Product product = item.getProduct();
+            Product storeProduct = searchById(product.getId());
+
+            storeProduct.setQuantity(storeProduct.getQuantity() - item.getQuantity());
+            updateById(storeProduct.getId(), storeProduct);
+        }
+
+        cart.clear();
+        return true;
     }
 }

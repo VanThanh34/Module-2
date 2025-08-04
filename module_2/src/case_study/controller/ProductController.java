@@ -16,7 +16,11 @@ public class ProductController {
 
     public static void add() {
         Product product = MenuView.addProduct();
-        service.add(product);
+        if (product != null) {
+            service.add(product);
+        } else {
+            System.out.println("❌ Không thể thêm sản phẩm vì dữ liệu không hợp lệ.");
+        }
     }
     public static void display() {
         for (Product p : service.findAll()) {
@@ -79,7 +83,7 @@ public class ProductController {
     }
 
     public static void showCart() {
-        List<CartItem> cart = service.getCart();
+        List<CartItem> cart = ProductService.getCart();
 
         System.out.println("GIỎ HÀNG HIỆN TẠI:");
         if (cart.isEmpty()) {
@@ -91,4 +95,43 @@ public class ProductController {
         }
     }
 
+    public static void checkoutCart() {
+        List<CartItem> cart = ProductService.getCart();
+
+        if (cart.isEmpty()) {
+            System.out.println("Giỏ hàng của bạn đang trống.");
+            return;
+        }
+
+        System.out.println("╔════════════════════════════════════════╗");
+        System.out.println("║         HÓA ĐƠN TẠM TÍNH GIỎ HÀNG      ║");
+        System.out.println("╠════════════════════════════════════════╣");
+
+        double total = 0;
+        for (CartItem item : cart) {
+            Product p = item.getProduct();
+            double subTotal = p.getPrice() * item.getQuantity();
+            total += subTotal;
+            System.out.printf("║ %-16s x%-3d : %,10.2f VND ║\n",
+                    p.getName(), item.getQuantity(), subTotal);
+        }
+
+        System.out.println("╠════════════════════════════════════════╣");
+        System.out.printf("║ %-24s %,9.2f VND ║\n", "Tổng cộng:", total);
+        System.out.println("╚════════════════════════════════════════╝");
+
+        System.out.print("Bạn có muốn thanh toán không? (y/n): ");
+        Scanner sc = new Scanner(System.in);
+        String confirm = sc.nextLine().toLowerCase();
+
+        if (confirm.equals("y")) {
+            if (ProductService.checkout()) {
+                System.out.println("✅ Thanh toán thành công! Cảm ơn bạn đã mua hàng.");
+            } else {
+                System.out.println("❌ Thanh toán thất bại. Một số sản phẩm trong giỏ không đủ số lượng trong kho.");
+            }
+        } else {
+            System.out.println("❌ Đã hủy thanh toán.");
+        }
+    }
 }
