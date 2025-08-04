@@ -2,6 +2,7 @@ package case_study.service;
 
 
 import case_study.entity.CartItem;
+import case_study.entity.Customer;
 import case_study.entity.Product;
 import case_study.repository.ProductRepository;
 
@@ -72,5 +73,13 @@ public class ProductService implements IProductService{
     }
     public String infoProductInCart(int id){
         return repository.infoProductInCart(id);
+    }
+
+    public void addInfoCustommer(String name, String phone) {
+        repository.addInfoCustommer(name, phone);
+    }
+
+    public List<Customer> showCustomer() {
+        return repository.showCustomer();
     }
 }

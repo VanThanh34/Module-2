@@ -41,7 +41,8 @@ public class MenuView {
             System.out.println("║ 3.  Xóa sản phẩm                       ║");
             System.out.println("║ 4.  Hiển thị danh sách sản phẩm        ║");
             System.out.println("║ 5.  Tìm kiếm sản phẩm                  ║");
-            System.out.println("║ 6.  Quay lại menu chính                ║");
+            System.out.println("║ 6.  Hiển thị danh sách khách hàng      ║");
+            System.out.println("║ 7.  Quay lại menu chính                ║");
             System.out.println("╚════════════════════════════════════════╝");
             System.out.print("Lựa chọn của ông chủ: ");
             int choice = InputInteger.inputInteger();
@@ -51,7 +52,8 @@ public class MenuView {
                 case 3 -> ProductController.delete();
                 case 4 -> ProductController.display();
                 case 5 -> ProductController.search();
-                case 6 -> {
+                case 6 -> ProductController.showCustomer();
+                case 7 -> {
                     displayMenu();
                     return;
                 }
@@ -67,7 +69,7 @@ public class MenuView {
             System.out.println("╠════════════════════════════════════════╣");
             System.out.println("║ 1.  Hiển thị danh sách sản phẩm        ║");
             System.out.println("║ 2.  Tìm kiếm sản phẩm                  ║");
-            System.out.println("║ 3.  Nhập số điện thoại để liên hệ      ║");
+            System.out.println("║ 3.  Nhập thông tin liên lạc            ║");
             System.out.println("║ 4.  Quay lại menu chính                ║");
             System.out.println("╚════════════════════════════════════════╝");
             System.out.print("Lựa chọn của khách hàng: ");
@@ -79,7 +81,7 @@ public class MenuView {
                     displayMenuBuy();
                 }
                 case 2 -> ProductController.search();
-                case 3 -> phoneNumber();
+                case 3 -> ProductController.infoCustommer();
                 case 4 -> {
                     displayMenu();
                     return;
@@ -89,18 +91,25 @@ public class MenuView {
         }
     }
 
-    public static void phoneNumber() {
+    public static String phoneNumber() {
         System.out.print("Mời nhập số điện thoại của bạn: ");
-        Scanner sc = new Scanner(System.in);
         String phone = sc.nextLine();
         String validatePhone = "^0\\d{9}$";
         while (!phone.matches(validatePhone)) {
             System.out.print("Bạn nhập sai định dạng 0xxxxxxxxx và chỉ dùng chữ sô. Vui lòng nhập lại: ");
             phone = sc.nextLine();
         }
-        System.out.println("Số điện thoại của bạn là: " + phone);
-        System.out.println("Shop sẽ liên hệ bạn sau nhé!");
-        System.out.println();
+        return phone;
+    }
+    public static String nameCustommer(){
+        System.out.print("Mời nhập tên của bạn: ");
+        String nameCus = sc.nextLine();
+        String validateName = "^([A-Z][a-z]{1,10})( [A-Z][a-z]{1,10}){0,3}$";
+        while (!nameCus.matches(validateName)){
+            System.out.print("Bạn nhập sai định dạng 0xxxxxxxxx và chỉ dùng chữ sô. Vui lòng nhập lại: ");
+            nameCus = sc.nextLine();
+        }
+        return nameCus;
     }
 
     public static final Scanner sc = new Scanner(System.in);

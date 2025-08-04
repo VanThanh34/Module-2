@@ -1,6 +1,7 @@
 package case_study.controller;
 
 import case_study.entity.CartItem;
+import case_study.entity.Customer;
 import case_study.entity.Product;
 import case_study.main.MenuView;
 import case_study.service.ProductService;
@@ -164,5 +165,17 @@ public class ProductController {
         String result = service.changeFromCart(idDeleteCart, quantityProductDelete);
         System.out.println(result);
         showCart();
+    }
+
+    public static void infoCustommer() {
+        String name = MenuView.nameCustommer();
+        String phone =MenuView.phoneNumber();
+        service.addInfoCustommer(name, phone);
+    }
+
+    public static void showCustomer() {
+        for (Customer customer : service.showCustomer()) {
+            System.out.println(customer);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package case_study.repository;
 
 import case_study.entity.CartItem;
+import case_study.entity.Customer;
 import case_study.entity.Product;
 
 import java.io.*;
@@ -10,7 +11,9 @@ import java.util.List;
 public class ProductRepository implements IProductRepository {
     private final static List<Product> products = new ArrayList<>();
     private static final String UrlFileData = "src/case_study/data/Product.csv";
+    private static final String UrlFileCustomer = "src/case_study/data/Customer.csv";
     private final List<CartItem> cart = new ArrayList<>();
+    private final List<Customer> customers = new ArrayList<>();
 
     @Override
     public List<Product> findAll() {
@@ -248,5 +251,35 @@ public class ProductRepository implements IProductRepository {
             }
         }
         return "Sản phẩm không tồn tại trong giỏ hàng.";
+    }
+
+    public void addInfoCustommer(String name, String phone) {
+        try (FileWriter fileWriter = new FileWriter(UrlFileCustomer, true);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            bufferedWriter.write(name + "," + phone);
+            bufferedWriter.newLine();
+            System.out.println("✅ Đã lưu thông tin khách hàng vào file.");
+        } catch (IOException e) {
+            System.out.println("❌ Lỗi ghi file");
+        }
+
+    }
+    public List<Customer> showCustomer() {
+        File file = new File(UrlFileCustomer);
+        customers.clear();
+        try (FileReader fileReader = new FileReader(file);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] temp = line.trim().split(",");
+                Customer customer = new Customer(temp[0],temp[1]);
+                customers.add(customer);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Không tìm thấy File!");
+        } catch (IOException e) {
+            System.out.println("Lỗi đọc File!");
+        }
+        return new ArrayList<>(customers);
     }
 }
