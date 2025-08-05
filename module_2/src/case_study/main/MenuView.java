@@ -188,10 +188,8 @@ public class MenuView {
         System.out.print("Mời nhập vào lựa chọn của bạn: ");
         int choice3 = InputInteger.inputInteger();
         switch (choice3) {
-            case 1 -> {
+            case 1 ->
                 ProductController.buyProduct();
-                displayMenuBuy();
-            }
             case 2 -> {
                 ProductController.addToCart();
                 System.out.println("====================================================");

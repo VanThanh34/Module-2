@@ -5,6 +5,8 @@ import case_study.entity.Customer;
 import case_study.entity.Product;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -153,17 +155,18 @@ public class ProductRepository implements IProductRepository {
         double total = product.getPrice() * quantity;
         String priceFormatted = String.format("%.2f đ", product.getPrice());
         String totalFormatted = String.format("%.2f đ", total);
-
+        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         return String.format("""
                 +-----------------------------------------------+
                 |              MUA HÀNG THÀNH CÔNG              |
                 +-----------------------------------------------+
-                | Tên sản phẩm : %-30s |
-                | Số lượng     : %-30d |
-                | Đơn giá      : %-30s |
-                | Tổng tiền    : %-30s |
+                | Tên sản phẩm     : %-26s |
+                | Số lượng         : %-26d |
+                | Đơn giá          : %-26s |
+                | Tổng tiền        : %-26s |
+                | Thời gian mua    : %-26s |
                 +-----------------------------------------------+
-                """, product.getName(), quantity, priceFormatted, totalFormatted);
+                """, product.getName(), quantity, priceFormatted, totalFormatted, time);
 
     }
 

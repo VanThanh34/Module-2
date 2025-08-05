@@ -7,6 +7,8 @@ import case_study.main.MenuView;
 import case_study.service.ProductService;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -150,7 +152,11 @@ public class ProductController {
 
         if (confirm.equals("y")) {
             if (ProductService.checkout()) {
+                String time = LocalDateTime.now()
+                        .format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+
                 System.out.println("✅ Thanh toán thành công! Cảm ơn bạn đã mua hàng.");
+                System.out.println("🕒 Thời gian thanh toán: " + time);
             } else {
                 System.out.println("❌ Thanh toán thất bại. Một số sản phẩm trong giỏ không đủ số lượng trong kho.");
             }
