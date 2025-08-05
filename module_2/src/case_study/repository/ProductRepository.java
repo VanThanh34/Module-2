@@ -6,6 +6,7 @@ import case_study.entity.Product;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProductRepository implements IProductRepository {
@@ -154,15 +155,15 @@ public class ProductRepository implements IProductRepository {
         String totalFormatted = String.format("%.2f đ", total);
 
         return String.format("""
-    +-----------------------------------------------+
-    |              MUA HÀNG THÀNH CÔNG              |
-    +-----------------------------------------------+
-    | Tên sản phẩm : %-30s |
-    | Số lượng     : %-30d |
-    | Đơn giá      : %-30s |
-    | Tổng tiền    : %-30s |
-    +-----------------------------------------------+
-    """, product.getName(), quantity, priceFormatted, totalFormatted);
+                +-----------------------------------------------+
+                |              MUA HÀNG THÀNH CÔNG              |
+                +-----------------------------------------------+
+                | Tên sản phẩm : %-30s |
+                | Số lượng     : %-30d |
+                | Đơn giá      : %-30s |
+                | Tổng tiền    : %-30s |
+                +-----------------------------------------------+
+                """, product.getName(), quantity, priceFormatted, totalFormatted);
 
     }
 
@@ -187,19 +188,19 @@ public class ProductRepository implements IProductRepository {
         List<CartItem> cart = getCart();
 
         for (CartItem item : cart) {
-            Product product = item.getProduct();
+            Product product = item.product();
             Product storeProduct = searchById(product.getId());
 
-            if (storeProduct == null || storeProduct.getQuantity() < item.getQuantity()) {
+            if (storeProduct == null || storeProduct.getQuantity() < item.quantity()) {
                 return false;
             }
         }
 
         for (CartItem item : cart) {
-            Product product = item.getProduct();
+            Product product = item.product();
             Product storeProduct = searchById(product.getId());
 
-            storeProduct.setQuantity(storeProduct.getQuantity() - item.getQuantity());
+            storeProduct.setQuantity(storeProduct.getQuantity() - item.quantity());
             updateById(storeProduct.getId(), storeProduct);
         }
 
@@ -218,12 +219,12 @@ public class ProductRepository implements IProductRepository {
 
     public String changeFromCart(int idDeleteCart, int quantityProductDelete) {
         for (CartItem item : cart) {
-            if (item.getProduct().getId() == idDeleteCart) {
-                if (item.getQuantity() > quantityProductDelete) {
+            if (item.product().getId() == idDeleteCart) {
+                if (item.quantity() > quantityProductDelete) {
                     cart.remove(item);
-                    cart.add(new CartItem(item.getProduct(), item.getQuantity() - quantityProductDelete));
+                    cart.add(new CartItem(item.product(), item.quantity() - quantityProductDelete));
                     return "Đã giảm số lượng sản phẩm trong giỏ.";
-                } else if (item.getQuantity() == quantityProductDelete) {
+                } else if (item.quantity() == quantityProductDelete) {
                     cart.remove(item);
                     return "Đã xoá sản phẩm khỏi giỏ hàng.";
                 } else {
@@ -236,8 +237,8 @@ public class ProductRepository implements IProductRepository {
 
     public String infoProductInCart(int id) {
         for (CartItem item : cart) {
-            if (item.getProduct().getId() == id) {
-                String priceFormatted = String.format("%.2f đ", item.getProduct().getPrice());
+            if (item.product().getId() == id) {
+                String priceFormatted = String.format("%.2f đ", item.product().getPrice());
                 String totalFormatted = String.format("%.2f đ", item.getTotalPrice());
 
                 return String.format("""
@@ -251,10 +252,10 @@ public class ProductRepository implements IProductRepository {
                                 | Tổng     : %-37s |
                                 +--------------------------------------------------+
                                 """,
-                        item.getProduct().getId(),
-                        item.getProduct().getName(),
+                        item.product().getId(),
+                        item.product().getName(),
                         priceFormatted,
-                        item.getQuantity(),
+                        item.quantity(),
                         totalFormatted
                 );
             }
@@ -262,7 +263,7 @@ public class ProductRepository implements IProductRepository {
         return "Sản phẩm không tồn tại trong giỏ hàng.";
     }
 
-    public void addInfoCustommer(String name, String phone) {
+    public void addInfoCustomer(String name, String phone) {
         try (FileWriter fileWriter = new FileWriter(UrlFileCustomer, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             bufferedWriter.write(name + "," + phone);
@@ -273,6 +274,7 @@ public class ProductRepository implements IProductRepository {
         }
 
     }
+
     public List<Customer> showCustomer() {
         File file = new File(UrlFileCustomer);
         customers.clear();
@@ -281,7 +283,7 @@ public class ProductRepository implements IProductRepository {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] temp = line.trim().split(",");
-                Customer customer = new Customer(temp[0],temp[1]);
+                Customer customer = new Customer(temp[0], temp[1]);
                 customers.add(customer);
             }
         } catch (FileNotFoundException e) {
@@ -290,5 +292,40 @@ public class ProductRepository implements IProductRepository {
             System.out.println("Lỗi đọc File!");
         }
         return new ArrayList<>(customers);
+    }
+
+    public List<Product> searchByName(String name) {
+        List<Product> list = findAll();
+        List<Product> result = new ArrayList<>();
+        for (Product p : list) {
+            if (p.getName().toLowerCase().contains(name.toLowerCase())) {
+                result.add(p);
+            }
+        }
+        return result;
+    }
+
+    // Sắp xếp toàn bộ sản phẩm theo giá tăng dần
+    public List<Product> sortSearchByPriceAsc() {
+        List<Product> list = findAll(); // hoặc dùng trực tiếp products nếu có
+        list.sort(Comparator.comparingDouble(Product::getPrice));
+        return list;
+    }
+
+    // Sắp xếp toàn bộ sản phẩm theo giá giảm dần
+    public List<Product> sortSearchByPriceDesc() {
+        List<Product> list = findAll();
+        list.sort((p1, p2) -> Double.compare(p2.getPrice(), p1.getPrice()));
+        return list;
+    }
+
+    public List<Product> sortByPriceAsc(List<Product> list) {
+        list.sort(Comparator.comparingDouble(Product::getPrice));
+        return list;
+    }
+
+    public List<Product> sortByPriceDesc(List<Product> list) {
+        list.sort((p1, p2) -> Double.compare(p2.getPrice(), p1.getPrice()));
+        return list;
     }
 }

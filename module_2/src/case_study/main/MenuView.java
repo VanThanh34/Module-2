@@ -81,7 +81,7 @@ public class MenuView {
                     displayMenuBuy();
                 }
                 case 2 -> ProductController.search();
-                case 3 -> ProductController.infoCustommer();
+                case 3 -> ProductController.infoCustomer();
                 case 4 -> {
                     displayMenu();
                     return;
@@ -101,11 +101,12 @@ public class MenuView {
         }
         return phone;
     }
-    public static String nameCustommer(){
+
+    public static String nameCustommer() {
         System.out.print("Mời nhập tên của bạn: ");
         String nameCus = sc.nextLine();
         String validateName = "^([A-Z][a-z]{1,10})( [A-Z][a-z]{1,10}){0,3}$";
-        while (!nameCus.matches(validateName)){
+        while (!nameCus.matches(validateName)) {
             System.out.print("Bạn nhập sai định dạng 0xxxxxxxxx và chỉ dùng chữ sô. Vui lòng nhập lại: ");
             nameCus = sc.nextLine();
         }
@@ -162,8 +163,14 @@ public class MenuView {
         return InputInteger.inputInteger();
     }
 
+
     public static int searchById() {
         return inputId();
+    }
+
+    public static String inputName() {
+        System.out.print("Mời nhập vào tên sản phẩm: ");
+        return sc.nextLine();
     }
 
     public static void displayMenuBuy() {
@@ -173,7 +180,10 @@ public class MenuView {
         System.out.println("║ 1.  Mua sản phẩm                       ║");
         System.out.println("║ 2.  Thêm sản phẩm vào giỏ hàng         ║");
         System.out.println("║ 3.  Xem giỏ hàng hiện tại              ║");
-        System.out.println("║ 4.  Quay lại menu Khách hàng           ║");
+        System.out.println("║ 4.  Tìm kiếm theo tên                  ║");
+        System.out.println("║ 5.  Sắp xếp theo giá tăng dần          ║");
+        System.out.println("║ 6.  Sắp xếp theo giá giảm dần          ║");
+        System.out.println("║ 7.  Quay lại menu Khách hàng           ║");
         System.out.println("╚════════════════════════════════════════╝");
         System.out.print("Mời nhập vào lựa chọn của bạn: ");
         int choice3 = InputInteger.inputInteger();
@@ -191,7 +201,13 @@ public class MenuView {
                 ProductController.showCart();
                 displayMenuCart();
             }
-            case 4 -> displayMenuCustommer();
+            case 4 -> {
+                ProductController.searchByName();
+                displayMenuSearch();
+            }
+            case 5 -> ProductController.sortAllByPriceAsc();
+            case 6 -> ProductController.sortAllByPriceDesc();
+            case 7 -> displayMenuCustommer();
             default -> {
                 System.out.println("Vui lòng nhập số trong Menu");
                 System.out.println("====================================================");
@@ -204,11 +220,10 @@ public class MenuView {
         System.out.println("╔════════════════════════════════════════╗");
         System.out.println("║              MENU GIỎ HÀNG             ║");
         System.out.println("╠════════════════════════════════════════╣");
-        System.out.println("║ 1.  Sửa sản phẩm                       ║");
+        System.out.println("║ 1.  Sửa và xoá sản phẩm                ║");
         System.out.println("║ 2.  Thêm sản phẩm                      ║");
-        System.out.println("║ 3.  Xoá sản phẩm                       ║");
-        System.out.println("║ 4.  Thanh toán giỏ hàng hiện tại       ║");
-        System.out.println("║ 5.  Quay lại menu Mua sắm              ║");
+        System.out.println("║ 3.  Thanh toán giỏ hàng hiện tại       ║");
+        System.out.println("║ 4.  Quay lại menu Mua sắm              ║");
         System.out.println("╚════════════════════════════════════════╝");
         System.out.print("Mời nhập vào lựa chọn của bạn: ");
         int choice5 = InputInteger.inputInteger();
@@ -218,10 +233,8 @@ public class MenuView {
                 ProductController.addToCart();
                 displayMenuCart();
             }
-
-//            case 3 ->
-            case 4 -> ProductController.checkoutCart();
-            case 5 -> displayMenuBuy();
+            case 3 -> ProductController.checkoutCart();
+            case 4 -> displayMenuBuy();
             default -> {
                 System.out.println("Vui lòng nhập số trong Menu");
                 System.out.println("====================================================");
@@ -229,6 +242,27 @@ public class MenuView {
             }
         }
 
+    }
+
+    public static void displayMenuSearch() {
+        System.out.println("╔════════════════════════════════════════╗");
+        System.out.println("║              MENU TÌM KIẾM             ║");
+        System.out.println("╠════════════════════════════════════════╣");
+        System.out.println("║ 1.  Theo giá tăng dần                  ║");
+        System.out.println("║ 2.  Theo giá giảm dần                  ║");
+        System.out.println("║ 3.  Thoát ra menu Mua Sắm              ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.print(" Mời nhập vào lựa chọn của bạn: ");
+        int choice6 = InputInteger.inputInteger();
+        if (choice6 == 1) {
+            ProductController.sortLastSearchByPriceAsc();
+        } else if (choice6 == 2) {
+            ProductController.sortLastSearchByPriceDesc();
+        } else if (choice6 == 3) {
+            displayMenuBuy();
+        } else {
+            System.out.println("Mời nhập đúng số trong menu!");
+        }
     }
 }
 

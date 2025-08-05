@@ -75,11 +75,32 @@ public class ProductService implements IProductService{
         return repository.infoProductInCart(id);
     }
 
-    public void addInfoCustommer(String name, String phone) {
-        repository.addInfoCustommer(name, phone);
+    public void addInfoCustomer(String name, String phone) {
+        repository.addInfoCustomer(name, phone);
     }
 
     public List<Customer> showCustomer() {
         return repository.showCustomer();
     }
+
+    public List<Product> searchByName(String name) {
+        return repository.searchByName(name);
+    }
+    public List<Product> sortByPriceAsc() {
+        return repository.sortSearchByPriceAsc();
+    }
+
+    public List<Product> sortByPriceDesc() {
+        return repository.sortSearchByPriceDesc();
+    }
+
+    public List<Product> sortByPriceAsc(List<Product> list) {
+        return repository.sortByPriceAsc(list);
+    }
+
+    public List<Product> sortByPriceDesc(List<Product> list) {
+        return repository.sortByPriceDesc(list);
+    }
+
+
 }

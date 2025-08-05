@@ -7,13 +7,14 @@ import case_study.main.MenuView;
 import case_study.service.ProductService;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ProductController {
     private final static ProductService service = ProductService.getInstance();
     private final static Scanner sc = new Scanner(System.in);
-
+    private static List<Product> lastSearchResult = new ArrayList<>();
 
     public static void add() {
         Product product = MenuView.addProduct();
@@ -23,6 +24,7 @@ public class ProductController {
             System.out.println("❌ Không thể thêm sản phẩm vì dữ liệu không hợp lệ.");
         }
     }
+
     public static void display() {
         for (Product p : service.findAll()) {
             System.out.println(p);
@@ -68,6 +70,7 @@ public class ProductController {
             System.out.println("❌ Không tìm thấy sản phẩm.");
         }
     }
+
     public static void buyProduct() {
         int id = MenuView.inputId();
         service.infoProduct(id);
@@ -99,10 +102,10 @@ public class ProductController {
 
             double total = 0;
             for (CartItem item : cart) {
-                int id = item.getProduct().getId();
-                String name = item.getProduct().getName();
-                int quantity = item.getQuantity();
-                double price = item.getProduct().getPrice();
+                int id = item.product().getId();
+                String name = item.product().getName();
+                int quantity = item.quantity();
+                double price = item.product().getPrice();
                 double totalPrice = item.getTotalPrice();
                 total += totalPrice;
 
@@ -130,11 +133,11 @@ public class ProductController {
 
         double total = 0;
         for (CartItem item : cart) {
-            Product p = item.getProduct();
-            double subTotal = p.getPrice() * item.getQuantity();
+            Product p = item.product();
+            double subTotal = p.getPrice() * item.quantity();
             total += subTotal;
             System.out.printf("║ %-16s x%-3d : %,10.2f VND ║\n",
-                    p.getName(), item.getQuantity(), subTotal);
+                    p.getName(), item.quantity(), subTotal);
         }
 
         System.out.println("╠════════════════════════════════════════╣");
@@ -167,10 +170,10 @@ public class ProductController {
         showCart();
     }
 
-    public static void infoCustommer() {
+    public static void infoCustomer() {
         String name = MenuView.nameCustommer();
-        String phone =MenuView.phoneNumber();
-        service.addInfoCustommer(name, phone);
+        String phone = MenuView.phoneNumber();
+        service.addInfoCustomer(name, phone);
     }
 
     public static void showCustomer() {
@@ -178,4 +181,63 @@ public class ProductController {
             System.out.println(customer);
         }
     }
+
+    public static void searchByName() {
+        String name = MenuView.inputName();
+        List<Product> products = service.searchByName(name);
+        lastSearchResult = products;
+        if (products.isEmpty()) {
+            System.out.println("============================");
+            System.out.println("Không tìm thấy sản phẩm nào.");
+            System.out.println("============================");
+        } else {
+            System.out.println("======== Kết quả tìm kiếm ========");
+            for (Product p : products) {
+                System.out.println(p);
+            }
+        }
+    }
+
+    public static void sortAllByPriceAsc() {
+        List<Product> products = service.sortByPriceAsc();
+        System.out.println("======== Danh sách sản phẩm (giá tăng dần) ========");
+        for (Product p : products) {
+            System.out.println(p);
+        }
+    }
+
+    public static void sortAllByPriceDesc() {
+        List<Product> products = service.sortByPriceDesc();
+        System.out.println("======== Danh sách sản phẩm (giá giảm dần) ========");
+        for (Product p : products) {
+            System.out.println(p);
+        }
+    }
+
+
+    public static void sortLastSearchByPriceAsc() {
+        if (lastSearchResult == null || lastSearchResult.isEmpty()) {
+            System.out.println("Chưa có kết quả tìm kiếm nào để sắp xếp.");
+            return;
+        }
+        List<Product> sorted = service.sortByPriceAsc(new ArrayList<>(lastSearchResult));
+        System.out.println("======== Sắp xếp theo giá tăng dần ========");
+        for (Product p : sorted) {
+            System.out.println(p);
+        }
+    }
+
+    public static void sortLastSearchByPriceDesc() {
+        if (lastSearchResult == null || lastSearchResult.isEmpty()) {
+            System.out.println("Chưa có kết quả tìm kiếm nào để sắp xếp.");
+            return;
+        }
+        List<Product> sorted = service.sortByPriceDesc(new ArrayList<>(lastSearchResult));
+        System.out.println("======== Sắp xếp theo giá giảm dần ========");
+        for (Product p : sorted) {
+            System.out.println(p);
+        }
+    }
 }
+
+
