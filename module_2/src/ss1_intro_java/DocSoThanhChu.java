@@ -1,4 +1,4 @@
-package module_2.src.ss1_intro_java;
+package ss1_intro_java;
 
 import java.util.Scanner;
 
