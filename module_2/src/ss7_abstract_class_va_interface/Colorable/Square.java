@@ -1,4 +1,4 @@
-package module_2.src.ss7_abstract_class_va_interface.Colorable;
+package ss7_abstract_class_va_interface.Colorable;
 
 public class Square implements Colorable {
     private double side = 1.0;

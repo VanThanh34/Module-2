@@ -1,4 +1,4 @@
-package module_2.src.ss7_abstract_class_va_interface.Colorable;
+package ss7_abstract_class_va_interface.Colorable;
 
 public class TestSquare {
     public static void main(String[] args) {
