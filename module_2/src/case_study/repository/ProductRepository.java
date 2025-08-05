@@ -150,11 +150,20 @@ public class ProductRepository implements IProductRepository {
         updateById(id, product);
 
         double total = product.getPrice() * quantity;
+        String priceFormatted = String.format("%.2f đ", product.getPrice());
+        String totalFormatted = String.format("%.2f đ", total);
 
-        return "Mua hàng thành công!\nTên SP: " + product.getName()
-                + "\nSố lượng: " + quantity
-                + "\nĐơn giá: " + product.getPrice()
-                + "\nTổng tiền: " + total + " VNĐ";
+        return String.format("""
+    +-----------------------------------------------+
+    |              MUA HÀNG THÀNH CÔNG              |
+    +-----------------------------------------------+
+    | Tên sản phẩm : %-30s |
+    | Số lượng     : %-30d |
+    | Đơn giá      : %-30s |
+    | Tổng tiền    : %-30s |
+    +-----------------------------------------------+
+    """, product.getName(), quantity, priceFormatted, totalFormatted);
+
     }
 
     public String addToCart(int id, int quantity) {
@@ -236,8 +245,8 @@ public class ProductRepository implements IProductRepository {
                                 |             THÔNG TIN TRONG GIỎ HÀNG             |
                                 +--------------------------------------------------+
                                 | ID       : %-37d |
-                                | Name     : %-37s |
-                                | Price    : %-37s |
+                                | Tên      : %-37s |
+                                | Đơn giá  : %-37s |
                                 | Số lượng : %-37d |
                                 | Tổng     : %-37s |
                                 +--------------------------------------------------+
