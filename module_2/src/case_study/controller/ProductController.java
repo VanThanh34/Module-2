@@ -217,6 +217,7 @@ public class ProductController {
     public static void sortAllByPriceAsc() {
         List<Product> products = service.sortByPriceAsc();
         System.out.println("======== Danh sách sản phẩm (giá tăng dần) ========");
+        System.out.println(Product.getTableHeader());
         for (Product p : products) {
             System.out.println(p);
         }
@@ -225,6 +226,7 @@ public class ProductController {
     public static void sortAllByPriceDesc() {
         List<Product> products = service.sortByPriceDesc();
         System.out.println("======== Danh sách sản phẩm (giá giảm dần) ========");
+        System.out.println(Product.getTableHeader());
         for (Product p : products) {
             System.out.println(p);
         }
@@ -238,6 +240,7 @@ public class ProductController {
         }
         List<Product> sorted = service.sortByPriceAsc(new ArrayList<>(lastSearchResult));
         System.out.println("======== Sắp xếp theo giá tăng dần ========");
+        System.out.println(Product.getTableHeader());
         for (Product p : sorted) {
             System.out.println(p);
         }
@@ -250,6 +253,7 @@ public class ProductController {
         }
         List<Product> sorted = service.sortByPriceDesc(new ArrayList<>(lastSearchResult));
         System.out.println("======== Sắp xếp theo giá giảm dần ========");
+        System.out.println(Product.getTableHeader());
         for (Product p : sorted) {
             System.out.println(p);
         }
