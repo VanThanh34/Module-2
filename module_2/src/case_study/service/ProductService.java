@@ -14,7 +14,7 @@ public class ProductService implements IProductService{
     private static ProductService instance;
 
 
-    private ProductService() {
+    public ProductService() {
     }
 
     public static synchronized ProductService getInstance(){

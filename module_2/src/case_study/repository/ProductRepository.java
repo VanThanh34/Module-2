@@ -19,7 +19,7 @@ public class ProductRepository implements IProductRepository {
     private final List<Customer> customers = new ArrayList<>();
 
     @Override
-    public List<Product> findAll() {
+    public List<Product>    findAll() {
         File file = new File(UrlFileData);
         products.clear();
         try (FileReader fileReader = new FileReader(file);
@@ -215,6 +215,7 @@ public class ProductRepository implements IProductRepository {
         List<Product> productList = findAll();
         for (Product product : productList) {
             if (product.getId() == id) {
+                System.out.println(Product.getTableHeader());
                 System.out.println(product);
             }
         }

@@ -27,9 +27,18 @@ public class ProductController {
         }
     }
 
-    public static void display() {
-        for (Product p : service.findAll()) {
-            System.out.println(p);
+    public static void display(List<Product> products) {
+        System.out.println("════════════ DANH SÁCH SẢN PHẨM ════════════");
+        if (products == null || products.isEmpty()) {
+            System.out.println("⚠ Danh sách sản phẩm trống.");
+        } else {
+            System.out.println(Product.getTableDivider());
+            System.out.println(Product.getTableHeader());
+            System.out.println(Product.getTableDivider());
+            for (Product c : products) {
+                System.out.println(c);
+            }
+            System.out.println(Product.getTableDivider());
         }
     }
 
@@ -177,7 +186,7 @@ public class ProductController {
     }
 
     public static void infoCustomer() {
-        String name = MenuView.nameCustommer();
+        String name = MenuView.nameCustomer();
         String phone = MenuView.phoneNumber();
         service.addInfoCustomer(name, phone);
     }
@@ -198,6 +207,7 @@ public class ProductController {
             System.out.println("============================");
         } else {
             System.out.println("======== Kết quả tìm kiếm ========");
+            System.out.println(Product.getTableHeader());
             for (Product p : products) {
                 System.out.println(p);
             }

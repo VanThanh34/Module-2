@@ -2,11 +2,14 @@ package case_study.main;
 
 import case_study.controller.ProductController;
 import case_study.entity.Product;
+import case_study.service.IProductService;
+import case_study.service.ProductService;
 import common.InputInteger;
 
 import java.util.Scanner;
 
 public class MenuView {
+    private static final IProductService PRODUCT_SERVICE = new  ProductService();
     public static void displayMenu() {
 
         while (true) {
@@ -50,7 +53,7 @@ public class MenuView {
                 case 1 -> ProductController.add();
                 case 2 -> ProductController.update();
                 case 3 -> ProductController.delete();
-                case 4 -> ProductController.display();
+                case 4 -> ProductController.display(PRODUCT_SERVICE.findAll());
                 case 5 -> ProductController.search();
                 case 6 -> ProductController.showCustomer();
                 case 7 -> {
@@ -76,7 +79,7 @@ public class MenuView {
             int choice2 = InputInteger.inputInteger();
             switch (choice2) {
                 case 1 -> {
-                    ProductController.display();
+                    ProductController.display(PRODUCT_SERVICE.findAll());
                     System.out.println("====================================================");
                     displayMenuBuy();
                 }
@@ -102,7 +105,7 @@ public class MenuView {
         return phone;
     }
 
-    public static String nameCustommer() {
+    public static String nameCustomer() {
         System.out.print("Mời nhập tên của bạn: ");
         String nameCus = sc.nextLine();
         String validateName = "^([A-Z][a-z]{1,10})( [A-Z][a-z]{1,10}){0,3}$";

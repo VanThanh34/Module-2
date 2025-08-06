@@ -51,16 +51,17 @@ public class Product {
 
     @Override
     public String toString() {
-        String priceFormatted = String.format("%.2f đ", price);
-        return """
-            +--------------------------------------------------+
-            |                THÔNG TIN SẢN PHẨM                |
-            +--------------------------------------------------+
-            | ID       : %-37d |
-            | Tên      : %-37s |
-            | Giá      : %-37s |
-            | Số Lượng : %-37d |
-            +--------------------------------------------------+
-            """.formatted(id, name, priceFormatted, quantity);
+        return String.format("| %-20s | %-20s | %-20s | %-20s |",
+                id, name, price,quantity);
+
+    }
+
+    public static String getTableHeader() {
+        return String.format("| %-20s | %-20s | %-20s | %-20s | ",
+                "ID", "Tên sản phẩm", "Giá", "SL");
+    }
+
+    public static String getTableDivider() {
+        return "+----------------------+----------------------+----------------------+----------------------+";
     }
 }
