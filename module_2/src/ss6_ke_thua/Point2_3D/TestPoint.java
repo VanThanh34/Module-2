@@ -1,4 +1,4 @@
-package module_2.src.ss6_ke_thua.Point2_3D;
+package ss6_ke_thua.Point2_3D;
 
 import java.util.Arrays;
 
@@ -11,7 +11,7 @@ class TestPoint {
         System.out.println(point1.getX());
         System.out.println(point1.getY());
         System.out.println(Arrays.toString(point1.getXY()));
-        System.out.println("Info: " + point1.toString());
+        System.out.println("Info: " + point1);
         System.out.println();
         Point3D point2 = new Point3D();
         point2.setX(3.1f);
@@ -23,6 +23,6 @@ class TestPoint {
         System.out.println(point2.getY());
         System.out.println(point2.getZ());
         System.out.println(Arrays.toString(point2.getXYZ()));
-        System.out.println("Info: " + point3.toString());
+        System.out.println("Info: " + point3);
     }
 }

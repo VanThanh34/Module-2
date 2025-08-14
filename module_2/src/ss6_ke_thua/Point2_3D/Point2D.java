@@ -1,6 +1,6 @@
-package module_2.src.ss6_ke_thua.Point2_3D;
+package ss6_ke_thua.Point2_3D;
 
- public class Point2D {
+public class Point2D {
     private float x = 0.0f;
     private float y = 0.0f;
     public Point2D(float x, float y) {

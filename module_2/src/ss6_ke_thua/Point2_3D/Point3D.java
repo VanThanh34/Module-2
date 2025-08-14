@@ -1,4 +1,4 @@
-package module_2.src.ss6_ke_thua.Point2_3D;
+package ss6_ke_thua.Point2_3D;
 
 class Point3D extends Point2D {
     private float z = 0.0f;
